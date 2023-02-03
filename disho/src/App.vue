@@ -1,0 +1,44 @@
+<template>
+  <Menu />
+</template>
+
+<script>
+import Menu from "./components/Menu.vue";
+export default {
+  components: {
+    Menu,
+  },
+};
+</script>
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin: 0vh;
+}
+
+@font-face {
+  font-family: viga;
+  src: url("./assets/Viga-Regular.ttf");
+}
+@font-face {
+  font-family: PT-Sans-Regular;
+  src: url("./assets/PTSans-Regular.ttf");
+}
+
+// Colors variables
+:root {
+  --colorDisho: #05172c;
+  --colorText: #264653;
+  --colorBtn: #7eb23d;
+  --grayLight: #d2d2d2;
+  --colorPlaceholder: #77808a;
+}
+</style>
