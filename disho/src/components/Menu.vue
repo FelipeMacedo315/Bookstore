@@ -30,12 +30,12 @@ export default {
 
 <style lang="scss">
 menu {
-  border: solid;
   height: 15vh;
   background-color: #f2f2f2;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  padding: 0% 2rem;
 }
 .container-logo {
   display: flex;

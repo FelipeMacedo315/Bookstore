@@ -1,5 +1,8 @@
 <template>
-  <Menu />
+  <main>
+    <Menu />
+    <router-view> </router-view>
+  </main>
 </template>
 
 <script>
@@ -14,6 +17,9 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+body {
+  overflow-x: hidden;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -40,5 +46,6 @@ export default {
   --colorBtn: #7eb23d;
   --grayLight: #d2d2d2;
   --colorPlaceholder: #77808a;
+  --colorWhite: #ffffff;
 }
 </style>
