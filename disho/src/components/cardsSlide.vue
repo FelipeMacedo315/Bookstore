@@ -15,7 +15,7 @@ export default {
   height: 25vh;
   width: 34vh;
   border-radius: 12px;
-  border: groove;
+  border: none;
   margin-left: 0.5rem;
   box-shadow: 0px 2px 12px #b7bdc4;
 

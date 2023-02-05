@@ -26,8 +26,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin: 0vh;
+  background-color: var(--grayBackground);
 }
 
 @font-face {
@@ -47,5 +47,6 @@ body {
   --grayLight: #d2d2d2;
   --colorPlaceholder: #77808a;
   --colorWhite: #ffffff;
+  --grayBackground: #f5f5f5;
 }
 </style>

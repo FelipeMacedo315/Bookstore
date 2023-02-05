@@ -41,6 +41,8 @@ export default {
 
 <style lang="scss">
 .title {
+  background-color: var(--grayBackground);
+  margin-top: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,6 +59,7 @@ export default {
   }
 }
 .vantagens-container {
+  margin-top: 2rem;
   display: flex;
   justify-content: space-around;
   width: 100%;
