@@ -16,20 +16,21 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card-vantagens {
   background-color: var(--colorWhite);
   box-shadow: 0px 2px 12px rgba(183, 189, 196, 0.503551);
   border-radius: 12px;
-  height: 15vh;
   width: 30%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 .container-img {
   border-right: 1px solid var(--grayLight);
   padding-right: 5%;
+  padding-left: 5%;
+  height: 50%;
   img {
     width: 100%;
     height: 100%;
@@ -37,6 +38,7 @@ export default {
   }
 }
 .text-vantagens {
+  width: 70%;
   text-align: left;
   h2 {
     color: var(--colorDisho);
@@ -44,7 +46,7 @@ export default {
     font-size: 1.5rem;
   }
   p {
-    color: var(--ColorText);
+    color: var(--colorText);
     font-family: PT-Sans-Regular;
     font-size: 1rem;
   }
