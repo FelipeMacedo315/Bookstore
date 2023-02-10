@@ -4,8 +4,8 @@
       <img v-bind:src="require(`../assets/${imgVantagens}`)" alt="" />
     </div>
     <div class="text-vantagens">
-      <h2>{{ vantagensTitle }}</h2>
-      <p>{{ vantagensSubtitle }}</p>
+      <h2 class="txt-title">{{ vantagensTitle }}</h2>
+      <p class="txt-subtitle">{{ vantagensSubtitle }}</p>
     </div>
   </div>
 </template>
@@ -40,15 +40,15 @@ export default {
 .text-vantagens {
   width: 70%;
   text-align: left;
-  h2 {
-    color: var(--colorDisho);
-    font-family: viga;
-    font-size: 1.5rem;
-  }
-  p {
-    color: var(--colorText);
-    font-family: PT-Sans-Regular;
-    font-size: 1rem;
-  }
+}
+.txt-title {
+  color: var(--colorDisho);
+  font-family: viga;
+  font-size: 1.5rem;
+}
+.txt-subtitle {
+  color: var(--colorText);
+  font-family: PT-Sans-Regular;
+  font-size: 1rem;
 }
 </style>

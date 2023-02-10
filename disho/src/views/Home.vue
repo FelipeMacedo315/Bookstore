@@ -1,13 +1,13 @@
 <template>
-  <main>
+  <main class="page-home">
     <Header />
-    <div class="title">
-      <h1>Best Sellers This Week</h1>
-      <p>
+    <div class="title-container">
+      <h1 class="txt-title">Best Sellers This Week</h1>
+      <p class="txt-subtitle">
         Pretium quam vulputate dignissim suspendisse in est ante. Ac felis donec et odio
         pellentesque diam
       </p>
-      <div class="vantagens-container">
+      <div class="container-slides">
         <Vantagens
           vantagensTitle="Fast Delivery"
           vantagensSubtitle="Within 2-3 hours after ordering"
@@ -25,40 +25,48 @@
         />
       </div>
     </div>
+    <Blog />
   </main>
 </template>
 
 <script>
 import Header from "../components/Header.vue";
 import Vantagens from "../components/Vantagens.vue";
+import Blog from "../components/Blog.vue";
 export default {
   components: {
     Header,
     Vantagens,
+    Blog,
   },
 };
 </script>
 
 <style lang="scss">
-.title {
+.page-home {
+  display: grid;
+  grid-template-columns: 100%;
+  row-gap: 5%;
+}
+.title-container {
   background-color: var(--grayBackground);
   margin-top: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  h1 {
-    color: var(--colorDisho);
-    font-family: viga;
-    font-size: 3rem;
-  }
-  p {
-    color: var(--colorText);
-    font-family: Pt-Sans-Regular;
-    font-size: 1.5rem;
-  }
 }
-.vantagens-container {
+.txt-title {
+  color: var(--colorDisho);
+  font-family: viga;
+  font-size: 3rem;
+}
+.txt-subtitle {
+  color: var(--colorText);
+  font-family: Pt-Sans-Regular;
+  font-size: 1.5rem;
+}
+.container-slides {
   margin-top: 2rem;
   display: flex;
   justify-content: space-around;
