@@ -76,8 +76,9 @@ header {
   }
 }
 .container-btns {
+  width: 75%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 .slides {
   padding: 0.5rem 0px;

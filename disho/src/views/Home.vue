@@ -69,7 +69,9 @@ export default {
 .container-slides {
   margin-top: 2rem;
   display: flex;
+  align-items: flex-start;
   justify-content: space-around;
   width: 100%;
+  height: 80%;
 }
 </style>

@@ -26,6 +26,5 @@ export default {
   font-size: 1rem;
   border-radius: 3rem;
   border: 1px groove var(--colorDisho);
-  margin-left: 5%;
 }
 </style>

@@ -6,8 +6,13 @@
       diam
     </p>
     <div class="container-slides">
-      <div class="card-blog" :key="index" v-for="(news, index) in healthNotices">
-        <CardsBlog :titleNews="news.title" :imgUrl="news.image_url" :newsDate="news.pubDate" />
+      <div class="container-slides" :key="index" v-for="(news, index) in healthNotices">
+        <CardsBlog
+          :titleNews="news.title"
+          :imgUrl="news.image_url"
+          :newsDate="news.pubDate"
+          :descriptionNews="news.description"
+        />
       </div>
     </div>
   </section>
@@ -45,31 +50,8 @@ export default {
 
 <style lang="scss">
 .blog {
+  height: 100%;
   background-color: var(--colorWhite);
-  padding: 5% 0%;
-}
-.card-blog {
-  height: auto;
-  width: 100%;
-  margin-left: 2rem;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-
-  h2 {
-    color: var(--colorDisho);
-    font-family: viga;
-    font-size: 1.5rem;
-    padding: 0.4rem 0;
-  }
-  p {
-    padding: 0.4rem 0;
-  }
-  img {
-    border: solid;
-    height: 40vh;
-    width: 100%;
-    object-fit: cover;
-  }
+  padding: 5rem 2rem 1rem 2rem;
 }
 </style>
