@@ -67,11 +67,10 @@ export default {
   font-size: 1.5rem;
 }
 .container-slides {
-  margin-top: 2rem;
+  box-sizing: border-box;
+  margin-top: 1rem;
   display: flex;
-  align-items: flex-start;
   justify-content: space-around;
   width: 100%;
-  height: 80%;
 }
 </style>

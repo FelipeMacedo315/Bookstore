@@ -23,8 +23,8 @@ export default {
 
 <style lang="scss">
 .card-blog {
-  width: 100%;
-  margin-left: 2rem;
+  box-sizing: border-box;
+  width: 80%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
