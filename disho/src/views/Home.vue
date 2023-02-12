@@ -26,6 +26,7 @@
       </div>
     </div>
     <Blog />
+    <Promotion />
   </main>
 </template>
 
@@ -33,8 +34,10 @@
 import Header from "../components/Header.vue";
 import Vantagens from "../components/Vantagens.vue";
 import Blog from "../components/Blog.vue";
+import Promotion from "../components/Promotion.vue";
 export default {
   components: {
+    Promotion,
     Header,
     Vantagens,
     Blog,
