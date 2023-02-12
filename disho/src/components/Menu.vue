@@ -33,7 +33,6 @@ menu {
   height: 15vh;
   background-color: #f2f2f2;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   flex-direction: row;
   padding: 0% 2rem;
