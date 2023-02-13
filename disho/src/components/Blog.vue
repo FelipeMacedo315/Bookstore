@@ -51,6 +51,7 @@ export default {
 <style lang="scss">
 .blog {
   background-color: var(--colorWhite);
-  padding: 5rem 2rem 1rem 2rem;
+  padding: 2rem 2rem 5vh 2rem;
+  margin-top: 10vh;
 }
 </style>

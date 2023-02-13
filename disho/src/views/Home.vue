@@ -27,6 +27,7 @@
     </div>
     <Blog />
     <Promotion />
+    <Footer />
   </main>
 </template>
 
@@ -35,12 +36,14 @@ import Header from "../components/Header.vue";
 import Vantagens from "../components/Vantagens.vue";
 import Blog from "../components/Blog.vue";
 import Promotion from "../components/Promotion.vue";
+import Footer from "../components/Footer.vue";
 export default {
   components: {
     Promotion,
     Header,
     Vantagens,
     Blog,
+    Footer,
   },
 };
 </script>
@@ -49,7 +52,6 @@ export default {
 .page-home {
   display: grid;
   grid-template-columns: 100%;
-  row-gap: 5%;
 }
 .title-container {
   background-color: var(--grayBackground);

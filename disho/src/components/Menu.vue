@@ -11,8 +11,8 @@
     </ul>
     <Input typeInput="search" placeholder="Search for product..." />
     <div class="circle-container">
-      <Circle imgCircle="user.png" />
-      <Circle imgCircle="shopping.png" />
+      <Circle imgCircle="user.png" circleClass="circle-small" />
+      <Circle imgCircle="shopping.png" circleClass="circle-small" />
     </div>
   </menu>
 </template>
