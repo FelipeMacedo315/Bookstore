@@ -35,6 +35,7 @@
 import Header from "../components/Header.vue";
 import Vantagens from "../components/Vantagens.vue";
 import Blog from "../components/Blog.vue";
+import Footer from "../components/Footer.vue";
 export default {
   components: {
     Header,
