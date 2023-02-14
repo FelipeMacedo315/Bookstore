@@ -26,6 +26,8 @@
       </div>
     </div>
     <Blog />
+    <Promotion />
+    <Footer />
   </main>
 </template>
 
@@ -38,6 +40,7 @@ export default {
     Header,
     Vantagens,
     Blog,
+    Footer,
   },
 };
 </script>
@@ -46,7 +49,6 @@ export default {
 .page-home {
   display: grid;
   grid-template-columns: 100%;
-  row-gap: 5%;
 }
 .title-container {
   background-color: var(--grayBackground);
