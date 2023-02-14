@@ -15,15 +15,14 @@ export default {
 
 <style lang="scss">
 .field-container {
+  height: 50%;
   width: 30vw;
   display: flex;
+  justify-content: center;
   flex-direction: row;
-  align-items: center;
-
   input {
     font-size: 1rem;
     box-sizing: content-box;
-    height: 50%;
     border-radius: 26px 0px 0px 26px;
     width: 75%;
     box-sizing: border-box;
@@ -35,9 +34,8 @@ export default {
       color: var(--colorPlaceholder);
     }
   }
-
   button {
-    height: 50%;
+    height: 100%;
     width: 20%;
     background-color: var(--colorBtn);
     border: none;
