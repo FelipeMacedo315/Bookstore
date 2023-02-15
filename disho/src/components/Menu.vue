@@ -4,8 +4,8 @@
       <h1 class="logo">Disho</h1>
     </div>
     <ul class="sections-menu">
-      <li>Home</li>
-      <li>Shop</li>
+      <router-link to="/"> Home </router-link>
+      <router-link to="/shop"> Shop </router-link>
       <li>Blog</li>
       <li>Contacts</li>
     </ul>
