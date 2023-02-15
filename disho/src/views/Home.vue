@@ -1,5 +1,6 @@
 <template>
   <main class="page-home">
+    <Header />
     <div class="title-container">
       <h1 class="txt-title">Best Sellers This Week</h1>
       <p class="txt-subtitle">
@@ -26,7 +27,6 @@
     </div>
     <Blog />
     <Promotion />
-    <Footer />
   </main>
 </template>
 
