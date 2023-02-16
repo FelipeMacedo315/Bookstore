@@ -1,14 +1,14 @@
 <template>
-  <main class="page-home"></main>
+  <main class="page-home">
+    <SideBar />
+  </main>
 </template>
 
 <script>
-import Menu from "../components/Menu.vue";
-import Footer from "../components/Footer.vue";
+import SideBar from "../components/SideBar.vue";
 export default {
   components: {
-    Menu,
-    Footer,
+    SideBar,
   },
 };
 </script>

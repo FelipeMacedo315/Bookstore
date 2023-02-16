@@ -46,7 +46,7 @@ footer {
   display: grid;
   grid-template-columns: 20% 35% 35%;
   column-gap: 5%;
-  padding: 5% 2%;
+  padding: 10% 2% 2% 2%;
   align-items: flex-start;
 }
 .infos {
