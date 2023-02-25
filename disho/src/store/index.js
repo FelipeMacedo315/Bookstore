@@ -3,14 +3,23 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     healthNotices: "",
+    products: [],
   },
   getters: {},
   mutations: {
     handleState(state, data) {
       state.healthNotices = data;
     },
+    handleProducts(state, data) {
+      state.products = data;
+      console.log(state.products);
+    },
   },
   actions: {
+    productsAction(context, data) {
+      context.commit("handleProducts", data);
+    },
+
     healthAction(context, data) {
       const news = data.results.slice(0, 3);
       //format date

@@ -47,13 +47,11 @@ export default {};
 
 <style lang="scss">
 .sidebar {
-  padding-left: 2rem;
-  width: 30%;
+  width: 100%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   margin-bottom: 5%;
-  margin-top: 2%;
 }
 .divider-title {
   margin: 3vh 0vh 8vh 0vh;
@@ -95,6 +93,8 @@ export default {};
   gap: 10px;
   padding: 0% 15% 10% 5%;
   background-color: var(--colorWhite);
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
   h2 {
     margin-top: 15%;
   }
