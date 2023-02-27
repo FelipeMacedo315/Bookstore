@@ -40,14 +40,15 @@ export default {
 <style lang="scss">
 .page-shop {
   display: grid;
-  grid-template-columns: 30% 65%;
+  grid-template-columns: 30% 60%;
   column-gap: 5%;
   align-items: flex-start;
   margin: 5% 2%;
 }
 .items {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
+  row-gap: 4vh;
 }
 </style>

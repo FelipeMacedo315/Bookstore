@@ -1,8 +1,12 @@
 <template>
   <div class="card-product">
     <img v-bind:src="img" alt="" />
-    <span class="title-product">{{ name }} </span>
-    <span class="price">{{ price }} </span>
+
+    <p>
+      <span class="title-product">{{ name }} </span>
+      <br />
+      <span class="price">${{ price }} </span>
+    </p>
   </div>
 </template>
 
@@ -18,11 +22,13 @@ export default {
   width: 15vw;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   img {
     height: 80%;
     width: 100%;
     object-fit: fill;
+    border-radius: 1rem;
   }
 }
 .title-product {
