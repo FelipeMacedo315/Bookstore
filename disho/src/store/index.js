@@ -4,6 +4,7 @@ export default createStore({
   state: {
     healthNotices: "",
     products: [],
+    typeProduct: "fruits",
   },
   getters: {},
   mutations: {
@@ -14,10 +15,16 @@ export default createStore({
       state.products = data;
       console.log(state.products);
     },
+    handleStateType(state, data) {
+      state.typeProduct = data;
+    },
   },
   actions: {
     productsAction(context, data) {
       context.commit("handleProducts", data);
+    },
+    navigate(context, data) {
+      context.commit("handleStateType", data);
     },
 
     healthAction(context, data) {

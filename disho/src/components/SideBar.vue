@@ -9,17 +9,17 @@
         <h2>Categories:</h2>
         <div class="divider-categories"></div>
         <ul>
-          <li>
+          <li v-on:click="changeCategory('fruits')">
             <img src="../assets/fruit.png" alt="" />
             <span> Fruits </span>
           </li>
-          <li>
+          <li v-on:click="changeCategory('vegetables')">
             <img src="../assets/vegetable.png" alt="" />
             <span> Vegetables </span>
           </li>
-          <li>
+          <li v-on:click="changeCategory('cereals')">
             <img src="../assets/coffee-cup.png" alt="" />
-            <span> Cofee </span>
+            <span>Cereals </span>
           </li>
         </ul>
         <h2>Price Range:</h2>
@@ -42,7 +42,16 @@
 </template>
 
 <script>
-export default {};
+import store from "@/store";
+import { mapActions } from "vuex";
+export default {
+  computed: { ...mapActions["navigate"] },
+  methods: {
+    changeCategory(value) {
+      store.dispatch("navigate", value);
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -99,6 +108,7 @@ export default {};
     margin-top: 15%;
   }
   li {
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 50%;
