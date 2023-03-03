@@ -5,6 +5,8 @@ export default createStore({
     healthNotices: "",
     products: [],
     typeProduct: "fruits",
+    currentPage: 1,
+    totalItems: "",
   },
   getters: {},
   mutations: {
@@ -18,10 +20,16 @@ export default createStore({
     handleStateType(state, data) {
       state.typeProduct = data;
     },
+    handleTotalItems(state, data) {
+      state.totalItems = data;
+    },
   },
   actions: {
     productsAction(context, data) {
-      context.commit("handleProducts", data);
+      //ordena os items do array em um padrão
+      data.products.sort((a, b) => b.name.length - a.name.length);
+      context.commit("handleProducts", data.products);
+      context.commit("handleTotalItems", data.totalItems);
     },
     navigate(context, data) {
       context.commit("handleStateType", data);

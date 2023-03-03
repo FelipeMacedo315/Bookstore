@@ -4,14 +4,25 @@
     <div v-if="!products">
       <h1>carrgwando</h1>
     </div>
-    <div class="items" v-else>
-      <component v-for="(items, index) in products">
-        <CardProduct
-          v-bind:name="items.name"
-          v-bind:price="items.price"
-          v-bind:img="items.image[0]"
-        />
-      </component>
+    <div class="principal" v-else>
+      <div class="container-sorting">
+        <select v-on:change="lowPrice">
+          <option value="default">Default</option>
+          <option value="high">High Price</option>
+          <option value="low">Low Price</option>
+        </select>
+
+        <p class="results">Showing 1-10 of {{ totalItems }} items</p>
+      </div>
+      <div class="container-products">
+        <component v-for="(items, index) in products">
+          <CardProduct
+            v-bind:name="items.name"
+            v-bind:price="items.price"
+            v-bind:img="items.image[0]"
+          />
+        </component>
+      </div>
     </div>
   </main>
 </template>
@@ -23,7 +34,7 @@ import { mapActions, mapState } from "vuex";
 import store from "@/store";
 
 export default {
-  computed: { ...mapState(["products", "typeProduct"]) },
+  computed: { ...mapState(["products", "typeProduct", "currentPage", "totalItems"]) },
   watch: {
     typeProduct(current, old) {
       this.fetchProducts();
@@ -32,12 +43,32 @@ export default {
   mounted() {
     this.fetchProducts();
   },
+  data() {
+    return {
+      optionSort: "",
+    };
+  },
   methods: {
     fetchProducts() {
-      fetch(`https://api-disho.up.railway.app/DishoApi/${this.typeProduct}`)
+      fetch(
+        `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
+      )
         .then((response) => response.json())
-        .then((result) => result)
         .then((data) => store.dispatch("productsAction", data));
+    },
+    lowPrice(value) {
+      this.optionSort = value.target.value;
+      switch (this.optionSort) {
+        case "default":
+          this.products.sort((a, b) => b.name.length - a.name.length);
+          break;
+        case "high":
+          this.products.sort((a, b) => b.price - a.price);
+          break;
+        case "low":
+          this.products.sort((a, b) => a.price - b.price);
+          break;
+      }
     },
   },
   components: {
@@ -55,10 +86,38 @@ export default {
   align-items: flex-start;
   margin: 5% 2%;
 }
-.items {
+.principal {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.container-sorting {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  select {
+    font-family: PT-Sans-Regular;
+    font-size: 1rem;
+    color: var(--colorDisho);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    border: solid 1px var(--grayLight);
+  }
+
+  p {
+    font-family: PT-Sans-Regular;
+    font-size: 1rem;
+    color: var(--colorText);
+    font-weight: 400;
+  }
+}
+.container-products {
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  row-gap: 4vh;
+  row-gap: 6vh;
+  column-gap: 5vh;
 }
 </style>
