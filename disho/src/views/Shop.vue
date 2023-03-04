@@ -23,6 +23,18 @@
           />
         </component>
       </div>
+      <div class="pagination">
+        <button
+          v-for="number in 4"
+          v-on:click="changeStatusBtn(number)"
+          v-bind:class="{
+            btnGreen: number === currentPage ? true : false,
+            btnWhite: number === currentPage ? false : true,
+          }"
+        >
+          {{ number }}
+        </button>
+      </div>
     </div>
   </main>
 </template>
@@ -30,11 +42,11 @@
 <script>
 import SideBar from "../components/SideBar.vue";
 import CardProduct from "../components/CardProduct.vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, Store } from "vuex";
 import store from "@/store";
 
 export default {
-  computed: { ...mapState(["products", "typeProduct", "currentPage", "totalItems"]) },
+  computed: { ...mapState(["products", "typeProduct", "currentPage", "totalPages", "totalItems"]) },
   watch: {
     typeProduct(current, old) {
       this.fetchProducts();
@@ -46,6 +58,9 @@ export default {
   data() {
     return {
       optionSort: "",
+      btnStatus: false,
+      btnA: true,
+      btnG: false,
     };
   },
   methods: {
@@ -69,6 +84,9 @@ export default {
           this.products.sort((a, b) => a.price - b.price);
           break;
       }
+    },
+    changeStatusBtn(btnValue) {
+      store.dispatch("handleCurrentPage", btnValue);
     },
   },
   components: {
@@ -119,5 +137,32 @@ export default {
   flex-wrap: wrap;
   row-gap: 6vh;
   column-gap: 5vh;
+}
+
+.pagination {
+  width: 100%;
+}
+
+.btnGreen {
+  border: none;
+  padding: 1.5vh 1.7vh;
+  background-color: var(--colorBtn);
+  color: var(--colorWhite);
+  font-size: 1rem;
+  border-radius: 4px;
+  font-family: "PT-Sans-Regular";
+  font-weight: 700;
+  margin-left: 0.5vw;
+}
+.btnWhite {
+  border: none;
+  padding: 1.5vh 1.7vh;
+  background-color: var(--colorWhite);
+  color: var(--colorDisho);
+  font-size: 1rem;
+  border-radius: 4px;
+  font-family: "PT-Sans-Regular";
+  font-weight: 700;
+  margin-left: 0.5vw;
 }
 </style>
