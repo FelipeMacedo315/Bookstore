@@ -90,6 +90,7 @@ export default {
     },
     changeStatusBtn(btnValue) {
       store.dispatch("actionCurrentPage", btnValue);
+      window.scrollTo(0, 0);
     },
   },
   components: {
@@ -111,6 +112,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 5vh;
 }
 .container-sorting {
   display: flex;
@@ -143,7 +145,10 @@ export default {
 }
 
 .pagination {
+  margin-top: 10%;
   width: 100%;
+  padding-top: 5%;
+  border-top: 1px solid var(--grayLight);
 }
 
 .btnGreen {
