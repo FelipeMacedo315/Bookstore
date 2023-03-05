@@ -6,7 +6,7 @@ export default createStore({
     products: [],
     typeProduct: "fruits",
     currentPage: 1,
-    totalPages: 0,
+    totalPages: 1,
     totalItems: "",
   },
   getters: {},
@@ -16,7 +16,6 @@ export default createStore({
     },
     handleProducts(state, data) {
       state.products = data;
-      console.log(state.products);
     },
     handleStateType(state, data) {
       state.typeProduct = data;
@@ -27,7 +26,7 @@ export default createStore({
     handleTotalPages(state, data) {
       state.totalPages = data;
     },
-    handleCurrentPage(state, data) {
+    mutationCurrentPage(state, data) {
       state.currentPage = data;
     },
   },
@@ -38,13 +37,14 @@ export default createStore({
       context.commit("handleProducts", data.products);
       context.commit("handleTotalItems", data.totalItems);
       context.commit("handleTotalPages", data.nextPage);
+      console.log(data);
     },
     navigate(context, data) {
       context.commit("handleStateType", data);
     },
 
-    handleCurrentPage(context, data) {
-      context.commit("handleCurrentPage", data);
+    actionCurrentPage(context, data) {
+      context.commit("mutationCurrentPage", data);
     },
 
     healthAction(context, data) {

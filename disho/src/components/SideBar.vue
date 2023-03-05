@@ -43,12 +43,13 @@
 
 <script>
 import store from "@/store";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
-  computed: { ...mapActions["navigate"] },
+  computed: { ...mapActions["navigate"], ...mapState["currentPage"] },
   methods: {
     changeCategory(value) {
       store.dispatch("navigate", value);
+      store.dispatch("actionCurrentPage", 1);
     },
   },
 };

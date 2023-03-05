@@ -25,7 +25,7 @@
       </div>
       <div class="pagination">
         <button
-          v-for="number in 4"
+          v-for="number in totalPages"
           v-on:click="changeStatusBtn(number)"
           v-bind:class="{
             btnGreen: number === currentPage ? true : false,
@@ -49,6 +49,9 @@ export default {
   computed: { ...mapState(["products", "typeProduct", "currentPage", "totalPages", "totalItems"]) },
   watch: {
     typeProduct(current, old) {
+      this.fetchProducts();
+    },
+    currentPage() {
       this.fetchProducts();
     },
   },
@@ -86,7 +89,7 @@ export default {
       }
     },
     changeStatusBtn(btnValue) {
-      store.dispatch("handleCurrentPage", btnValue);
+      store.dispatch("actionCurrentPage", btnValue);
     },
   },
   components: {
