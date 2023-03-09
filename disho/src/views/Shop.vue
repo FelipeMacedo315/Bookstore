@@ -1,6 +1,6 @@
 <template>
   <main class="page-shop">
-    <SideBar />
+    <SideBar v-on:filterCondicions="filterItems" />
     <div v-if="!products">
       <h1>carrgwando</h1>
     </div>
@@ -49,14 +49,20 @@ export default {
   computed: { ...mapState(["products", "typeProduct", "currentPage", "totalPages", "totalItems"]) },
   watch: {
     typeProduct(current, old) {
-      this.fetchProducts();
+      this.fetchProducts(
+        `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
+      );
     },
     currentPage() {
-      this.fetchProducts();
+      this.fetchProducts(
+        `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
+      );
     },
   },
   mounted() {
-    this.fetchProducts();
+    this.fetchProducts(
+      `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
+    );
   },
   data() {
     return {
@@ -67,12 +73,11 @@ export default {
     };
   },
   methods: {
-    fetchProducts() {
-      fetch(
-        `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
-      )
+    fetchProducts(urlDefault) {
+      fetch(urlDefault)
         .then((response) => response.json())
-        .then((data) => store.dispatch("productsAction", data));
+        .then((data) => store.dispatch("productsAction", data))
+        .catch((err) => console.log(err));
     },
     lowPrice(value) {
       this.optionSort = value.target.value;
@@ -91,6 +96,20 @@ export default {
     changeStatusBtn(btnValue) {
       store.dispatch("actionCurrentPage", btnValue);
       window.scrollTo(0, 0);
+    },
+    filterItems(valueOfChildreen) {
+      this.fetchProducts(
+        "https://api-disho.up.railway.app/DishoApi/" +
+          this.typeProduct +
+          "/filter?page=" +
+          this.currentPage +
+          "&" +
+          "nameItem=" +
+          valueOfChildreen.currentTag +
+          "&" +
+          "maxPrice=" +
+          valueOfChildreen.currentValue
+      );
     },
   },
   components: {

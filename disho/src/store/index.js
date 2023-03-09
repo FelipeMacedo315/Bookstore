@@ -46,7 +46,9 @@ export default createStore({
     actionCurrentPage(context, data) {
       context.commit("mutationCurrentPage", data);
     },
-
+    productsFilter(context, data) {
+      context.commit("handleProducts", data);
+    },
     healthAction(context, data) {
       const news = data.results.slice(0, 3);
       //format date

@@ -24,17 +24,52 @@
         </ul>
         <h2>Price Range:</h2>
         <div class="divider-price-range"></div>
-        <input type="range" />
-        <p>Price: $0 - $30</p>
+        <input
+          v-on:change="currentValueRange = $event.target.value"
+          type="range"
+          min="1"
+          v-bind:max="rangeMaxPrice"
+          value="1"
+          step="0.50"
+        />
+        <p>Price: ${{ currentValueRange }} - {{ rangeMaxPrice }}</p>
 
         <h2>Produtcs Tags:</h2>
         <div class="divider-categories"></div>
         <div class="tags">
-          <span>Banana</span>
-          <span>Abacaxi</span>
-          <span>Melancia</span>
-          <span>Uva</span>
-          <span>Laranja</span>
+          <span
+            v-bind:class="tagKey === 'banana' ? 'tag-active' : 'tag-inactive'"
+            v-on:click="captureTags($event)"
+            >banana</span
+          >
+          <span
+            v-bind:class="tagKey === 'abacaxi' ? 'tag-active' : 'tag-inactive'"
+            v-on:click="captureTags($event)"
+            >abacaxi</span
+          >
+          <span
+            v-bind:class="tagKey === 'melancia' ? 'tag-active' : 'tag-inactive'"
+            v-on:click="captureTags($event)"
+            >melancia</span
+          >
+          <span
+            v-bind:class="tagKey === 'uva' ? 'tag-active' : 'tag-inactive'"
+            v-on:click="captureTags($event)"
+            >uva</span
+          >
+          <span
+            v-bind:class="tagKey === 'laranja' ? 'tag-active' : 'tag-inactive'"
+            v-on:click="captureTags($event)"
+            >laranja</span
+          >
+        </div>
+        <div class="btns-container">
+          <Button
+            v-on:click="captureCondicionsFilter($event)"
+            content="Apply Filter"
+            btnClass="btn-green"
+          />
+          <Button content="Clear All" btnClass="btn-white" />
         </div>
       </div>
     </div>
@@ -44,12 +79,36 @@
 <script>
 import store from "@/store";
 import { mapActions, mapState } from "vuex";
+import Button from "./Button.vue";
 export default {
-  computed: { ...mapActions["navigate"], ...mapState["currentPage"] },
+  components: {
+    Button,
+  },
+  computed: {
+    ...mapActions["navigate"],
+    ...mapState["currentPage"],
+  },
+  data() {
+    return {
+      rangeMaxPrice: 60,
+      currentValueRange: 1,
+      tagKey: "",
+      tagClass: "tag-inactive",
+    };
+  },
   methods: {
     changeCategory(value) {
       store.dispatch("navigate", value);
       store.dispatch("actionCurrentPage", 1);
+    },
+    captureTags(event) {
+      this.tagKey = event.target.innerText;
+    },
+    captureCondicionsFilter(element) {
+      this.$emit("filterCondicions", {
+        currentTag: this.tagKey,
+        currentValue: this.currentValueRange,
+      });
     },
   },
 };
@@ -136,13 +195,32 @@ input[type="range"] {
   justify-content: space-between;
   width: 100%;
   row-gap: 2vh;
-  span {
-    border: solid 1px var(--grayLight);
-    border-radius: 15px;
-    font-size: 0.8rem;
-    color: var(--colorDisho);
-    font-weight: 700;
-    padding: 2% 4%;
-  }
+}
+.tag-inactive {
+  border: solid 1px var(--grayLight);
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: var(--colorDisho);
+  font-weight: 700;
+  padding: 2% 4%;
+}
+.tag-active {
+  border: solid 1px var(--grayLight);
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: var(--colorWhite);
+  background-color: var(--colorDisho);
+  font-weight: 700;
+  padding: 2% 4%;
+}
+
+.btns-container {
+  background-color: var(--colorWhite);
+  display: flex;
+  flex-direction: column;
+  row-gap: 3vh;
+  width: 100%;
+  padding-top: 10%;
+  padding-bottom: 20%;
 }
 </style>

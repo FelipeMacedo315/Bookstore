@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  props: ["content", "btn-class"],
+  props: ["content", "btnClass"],
 };
 </script>
 
@@ -17,6 +17,9 @@ export default {
   font-size: 1rem;
   border-radius: 3rem;
   border: none;
+  :disabled {
+    background-color: orange;
+  }
 }
 .btn-white {
   background-color: var(--colorWhite);
