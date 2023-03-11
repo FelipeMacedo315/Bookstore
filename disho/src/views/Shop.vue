@@ -1,39 +1,49 @@
 <template>
-  <main class="page-shop">
-    <SideBar v-on:filterCondicions="filterItems" />
-    <div v-if="!products">
-      <h1>carrgwando</h1>
-    </div>
-    <div class="principal" v-else>
-      <div class="container-sorting">
-        <select v-on:change="lowPrice">
-          <option value="default">Default</option>
-          <option value="high">High Price</option>
-          <option value="low">Low Price</option>
-        </select>
+  <main class="all-page">
+    <BreadCrumps>
+      <a>Home </a>
+      <a>|</a>
+      <a>Shop</a>
+    </BreadCrumps>
+    <div class="container-sidebar-and-items-page">
+      <SideBar v-on:restartProducts="cancelFilter" v-on:filterCondicions="filterItems" />
+      <div class="no-results" v-if="!products.length">
+        <h1>
+          Nenhum Produto encontrado. <br />
+          Tente mudar os filtros
+        </h1>
+      </div>
+      <div class="principal" v-else>
+        <div class="container-sorting">
+          <select v-on:change="orderedBy">
+            <option value="default">Default</option>
+            <option value="high">High Price</option>
+            <option value="low">Low Price</option>
+          </select>
 
-        <p class="results">Showing 1-10 of {{ totalItems }} items</p>
-      </div>
-      <div class="container-products">
-        <component v-for="(items, index) in products">
-          <CardProduct
-            v-bind:name="items.name"
-            v-bind:price="items.price"
-            v-bind:img="items.image[0]"
-          />
-        </component>
-      </div>
-      <div class="pagination">
-        <button
-          v-for="number in totalPages"
-          v-on:click="changeStatusBtn(number)"
-          v-bind:class="{
-            btnGreen: number === currentPage ? true : false,
-            btnWhite: number === currentPage ? false : true,
-          }"
-        >
-          {{ number }}
-        </button>
+          <p class="results">Showing 1-10 of {{ totalItems }} items</p>
+        </div>
+        <div class="container-products">
+          <component v-for="(items, index) in products">
+            <CardProduct
+              v-bind:name="items.name"
+              v-bind:price="items.price"
+              v-bind:img="items.image[0]"
+            />
+          </component>
+        </div>
+        <div class="pagination">
+          <button
+            v-for="number in totalPages"
+            v-on:click="changeStatusBtn(number)"
+            v-bind:class="{
+              btnGreen: number === currentPage ? true : false,
+              btnWhite: number === currentPage ? false : true,
+            }"
+          >
+            {{ number }}
+          </button>
+        </div>
       </div>
     </div>
   </main>
@@ -42,6 +52,7 @@
 <script>
 import SideBar from "../components/SideBar.vue";
 import CardProduct from "../components/CardProduct.vue";
+import BreadCrumps from "../components/BreadCrumps.vue";
 import { mapActions, mapState, Store } from "vuex";
 import store from "@/store";
 
@@ -79,7 +90,7 @@ export default {
         .then((data) => store.dispatch("productsAction", data))
         .catch((err) => console.log(err));
     },
-    lowPrice(value) {
+    orderedBy(value) {
       this.optionSort = value.target.value;
       switch (this.optionSort) {
         case "default":
@@ -111,18 +122,31 @@ export default {
           valueOfChildreen.currentValue
       );
     },
+    cancelFilter(valueChildreen) {
+      if (valueChildreen) {
+        this.fetchProducts(
+          `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
+        );
+      } else {
+        null;
+      }
+    },
   },
   components: {
     SideBar,
     CardProduct,
+    BreadCrumps,
   },
 };
 </script>
 
 <style lang="scss">
-.page-shop {
-  display: grid;
-  grid-template-columns: 30% 60%;
+.all-page {
+  display: flex;
+  flex-direction: column;
+}
+.container-sidebar-and-items-page {
+  display: flex;
   column-gap: 5%;
   align-items: flex-start;
   margin: 5% 2%;
@@ -132,6 +156,8 @@ export default {
   flex-direction: column;
   align-items: center;
   row-gap: 5vh;
+  grid-area: items;
+  width: 60%;
 }
 .container-sorting {
   display: flex;
@@ -191,5 +217,17 @@ export default {
   font-family: "PT-Sans-Regular";
   font-weight: 700;
   margin-left: 0.5vw;
+}
+.no-results {
+  height: 100%;
+  display: flex;
+  padding-top: 10%;
+  justify-content: center;
+  width: 60%;
+  h1 {
+    color: var(--colorDisho);
+    font-size: 3rem;
+    font-family: viga;
+  }
 }
 </style>

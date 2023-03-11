@@ -37,6 +37,13 @@ menu {
   justify-content: space-between;
   flex-direction: row;
   padding: 0% 2rem;
+  a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--colorDisho);
+    font-weight: 400;
+    font-family: "PT-Sans-Regular";
+  }
 }
 .container-logo {
   display: flex;

@@ -1,10 +1,10 @@
 <template>
-  <button v-bind:class="btnClass">{{ content }}</button>
+  <button v-bind:disabled="btnDisable" v-bind:class="btnClass">{{ content }}</button>
 </template>
 
 <script>
 export default {
-  props: ["content", "btnClass"],
+  props: ["content", "btnClass", "btnDisable"],
 };
 </script>
 
@@ -17,9 +17,11 @@ export default {
   font-size: 1rem;
   border-radius: 3rem;
   border: none;
-  :disabled {
-    background-color: orange;
-  }
+  cursor: pointer;
+}
+:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .btn-white {
   background-color: var(--colorWhite);
@@ -29,5 +31,6 @@ export default {
   font-size: 1rem;
   border-radius: 3rem;
   border: 1px groove var(--colorDisho);
+  cursor: pointer;
 }
 </style>

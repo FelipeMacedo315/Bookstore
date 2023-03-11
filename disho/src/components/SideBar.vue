@@ -29,7 +29,7 @@
           type="range"
           min="1"
           v-bind:max="rangeMaxPrice"
-          value="1"
+          v-bind:value="currentValueRange"
           step="0.50"
         />
         <p>Price: ${{ currentValueRange }} - {{ rangeMaxPrice }}</p>
@@ -68,8 +68,9 @@
             v-on:click="captureCondicionsFilter($event)"
             content="Apply Filter"
             btnClass="btn-green"
+            v-bind:btnDisable="btnStatus"
           />
-          <Button content="Clear All" btnClass="btn-white" />
+          <Button v-on:click="clearConditions" content="Clear All" btnClass="btn-white" />
         </div>
       </div>
     </div>
@@ -94,6 +95,7 @@ export default {
       currentValueRange: 1,
       tagKey: "",
       tagClass: "tag-inactive",
+      btnStatus: false,
     };
   },
   methods: {
@@ -109,6 +111,15 @@ export default {
         currentTag: this.tagKey,
         currentValue: this.currentValueRange,
       });
+      this.btnStatus = true;
+      window.scrollTo(0, 0);
+    },
+    clearConditions() {
+      window.scrollTo(0, 0);
+      this.tagKey = "";
+      this.currentValueRange = 1;
+      this.$emit("restartProducts", true);
+      this.btnStatus = false;
     },
   },
 };
@@ -116,11 +127,12 @@ export default {
 
 <style lang="scss">
 .sidebar {
-  width: 100%;
+  width: 30%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   margin-bottom: 5%;
+  grid-area: sidebar;
 }
 .divider-title {
   margin: 3vh 0vh 8vh 0vh;
@@ -178,10 +190,17 @@ export default {
       font-size: 1rem;
       color: var(--colorText);
       font-weight: 700;
+      cursor: pointer;
     }
     img {
       height: 4vh;
     }
+  }
+  p {
+    font-size: 1.2rem;
+    font-family: "PT-Sans-Regular";
+    color: var(--colorText);
+    font-weight: 400;
   }
 }
 input[type="range"] {
@@ -203,6 +222,7 @@ input[type="range"] {
   color: var(--colorDisho);
   font-weight: 700;
   padding: 2% 4%;
+  cursor: pointer;
 }
 .tag-active {
   border: solid 1px var(--grayLight);
@@ -212,6 +232,7 @@ input[type="range"] {
   background-color: var(--colorDisho);
   font-weight: 700;
   padding: 2% 4%;
+  cursor: pointer;
 }
 
 .btns-container {
