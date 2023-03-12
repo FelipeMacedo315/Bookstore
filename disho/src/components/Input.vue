@@ -2,7 +2,7 @@
   <div class="field-container">
     <input v-bind:type="typeInput" v-bind:placeholder="placeholder" />
     <button>
-      <img src="../assets/glassmagnifiermagnifyingsearchsearchingweb_123111.png" alt="" />
+      <fa id="icon-glass" icon="magnifying-glass"></fa>
     </button>
   </div>
 </template>
@@ -29,10 +29,15 @@ export default {
     border: 1px solid var(--grayLight);
     font-family: Pt-Sans-Regular;
     padding-left: 5%;
+
     &::placeholder {
       padding-left: 5%;
       color: var(--colorPlaceholder);
     }
+  }
+  #icon-glass {
+    color: white;
+    font-size: 1.5rem;
   }
   button {
     height: 100%;

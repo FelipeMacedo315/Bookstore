@@ -10,16 +10,13 @@
         <div class="divider-categories"></div>
         <ul>
           <li v-on:click="changeCategory('fruits')">
-            <img src="../assets/fruit.png" alt="" />
-            <span> Fruits </span>
+            <span> <fa icon="apple-alt"></fa> Fruits </span>
           </li>
           <li v-on:click="changeCategory('vegetables')">
-            <img src="../assets/vegetable.png" alt="" />
-            <span> Vegetables </span>
+            <span> <fa icon="seedling"></fa> Vegetables </span>
           </li>
           <li v-on:click="changeCategory('cereals')">
-            <img src="../assets/coffee-cup.png" alt="" />
-            <span>Cereals </span>
+            <span><fa icon="spoon"></fa> Cereals </span>
           </li>
         </ul>
         <h2>Price Range:</h2>
@@ -183,24 +180,32 @@ export default {
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 50%;
     margin-top: 10%;
+    font-size: 1.3rem;
+    svg {
+      padding-right: 2vw;
+      opacity: 0.6;
+    }
     span {
       font-family: PT-Sans-Regular;
-      font-size: 1rem;
       color: var(--colorText);
-      font-weight: 700;
+      font-weight: 400;
       cursor: pointer;
     }
-    img {
-      height: 4vh;
-    }
   }
+
   p {
     font-size: 1.2rem;
     font-family: "PT-Sans-Regular";
     color: var(--colorText);
     font-weight: 400;
+  }
+}
+li:hover {
+  span,
+  svg {
+    opacity: 1;
+    font-weight: 700;
   }
 }
 input[type="range"] {

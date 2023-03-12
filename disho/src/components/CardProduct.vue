@@ -1,18 +1,29 @@
 <template>
-  <div class="card-product">
+  <div v-on:mouseleave="btnStatus = false" v-on:mousemove="btnStatus = true" class="card-product">
     <img v-bind:src="img" alt="" />
-
     <p>
       <span class="title-product">{{ name }} </span>
       <br />
       <span class="price">${{ price }} </span>
     </p>
+    <button v-show="btnStatus" class="btn-green"><fa icon="cart-shopping"></fa> Add to Cart</button>
   </div>
 </template>
 
 <script>
 export default {
   props: ["name", "img", "price"],
+  components: {},
+  data() {
+    return {
+      btnStatus: false,
+    };
+  },
+  methods: {
+    viewBtn() {
+      this.btnStatus = true;
+    },
+  },
 };
 </script>
 
@@ -22,13 +33,17 @@ export default {
   width: 15vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   img {
-    height: 80%;
+    height: 70%;
     width: 100%;
     object-fit: fill;
     border-radius: 1rem;
+  }
+  button {
+    margin-top: 5%;
+    letter-spacing: 2px;
+    transition-delay: 2s;
   }
 }
 .title-product {
