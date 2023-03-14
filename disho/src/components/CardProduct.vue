@@ -6,13 +6,15 @@
       <br />
       <span class="price">${{ price }} </span>
     </p>
-    <button v-show="btnStatus" class="btn-green"><fa icon="cart-shopping"></fa> Add to Cart</button>
+    <button v-on:click="$router.push(`/shop/product/${id}`)" v-show="btnStatus" class="btn-green">
+      <fa icon="cart-shopping"></fa> Add to Cart
+    </button>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["name", "img", "price"],
+  props: ["name", "img", "price", "id"],
   components: {},
   data() {
     return {

@@ -9,9 +9,27 @@ import {
   faAppleAlt,
   faSeedling,
   faSpoon,
+  faPlus,
+  faMinus,
+  faHeart,
+  faTruck,
+  faClockFour,
+  faLeaf,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faCartShopping, faMagnifyingGlass, faAppleAlt, faSeedling, faSpoon);
+library.add(
+  faCartShopping,
+  faMagnifyingGlass,
+  faAppleAlt,
+  faSeedling,
+  faSpoon,
+  faPlus,
+  faMinus,
+  faHeart,
+  faTruck,
+  faClockFour,
+  faLeaf
+);
 
 createApp(App).component("fa", FontAwesomeIcon).use(store).use(router).mount("#app");

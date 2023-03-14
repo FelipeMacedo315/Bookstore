@@ -29,6 +29,7 @@
               v-bind:name="items.name"
               v-bind:price="items.price"
               v-bind:img="items.image[0]"
+              v-bind:id="items._id"
             />
           </component>
         </div>
