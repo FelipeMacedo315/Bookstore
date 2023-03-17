@@ -36,7 +36,8 @@ export default {
 <style lang="scss">
 header {
   background-color: var(--colorWhite);
-  padding: 0px 2rem;
+  padding-left: 2rem;
+  margin-bottom: 15%;
   height: 80vh;
   display: grid;
   grid-template-columns: auto auto;

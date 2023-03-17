@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import carrinho from "./carrinho";
 
 export default createStore({
   state: {
@@ -63,5 +64,7 @@ export default createStore({
       context.commit("handleState", news);
     },
   },
-  modules: {},
+  modules: {
+    carrinho,
+  },
 });

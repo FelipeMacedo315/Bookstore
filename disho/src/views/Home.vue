@@ -31,29 +31,4 @@ export default {
   display: grid;
   grid-template-columns: 100%;
 }
-.title-container {
-  background-color: var(--grayBackground);
-  margin-top: 15%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-.txt-title {
-  color: var(--colorDisho);
-  font-family: viga;
-  font-size: 3rem;
-}
-.txt-subtitle {
-  color: var(--colorText);
-  font-family: Pt-Sans-Regular;
-  font-size: 1.5rem;
-}
-.container-slides {
-  box-sizing: border-box;
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
 </style>

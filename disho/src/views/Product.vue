@@ -9,11 +9,12 @@
     </BreadCrumps>
     <div class="product-gallery">
       <div v-for="(element, indexEl) in item" class="images-product">
-        <img class="main-image" v-bind:src="element.image[0]" alt="" />
-        <section class="common-container-image">
+        <img v-on:click="handleGallery" class="main-image" v-bind:src="element.image[0]" alt="" />
+        <section class="common-container-images">
           <img
+            v-on:click="handleGallery"
             v-for="(commonImages, index) in element.image.slice(1)"
-            class="common-image"
+            class="common-images"
             v-bind:src="commonImages"
             v-bind:alt="commonImages"
           />
@@ -25,33 +26,56 @@
         <span>*Price for a Kg</span>
         <div class="quanty-container">
           <div class="input-simulator">{{ quanty }}</div>
-          <button><fa icon="plus"></fa></button>
-          <button><fa icon="minus"></fa></button>
+          <button v-on:click="count('+')"><fa icon="plus"></fa></button>
+          <button v-on:click="count('-')"><fa icon="minus"></fa></button>
           <button><fa icon="heart"></fa></button>
         </div>
+        <button v-on:click="addItem" class="btn-green">
+          <fa icon="cart-shopping"></fa> Add to Cart
+        </button>
+
+        <p class="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nobis facere. Pariatur iure
+          molestias distinctio obcaecati libero maxime magni explicabo? Excepturi voluptatibus,
+          adipisci aut laudantium pariatur officia similique? Ullam, perferendis!
+        </p>
       </div>
     </div>
+    <component v-if="item.length" v-show="galeryVisible">
+      <Gallery v-bind:imagesProduct="item[0].image" />
+    </component>
+    <Features />
   </main>
 </template>
 
 <script>
+import Button from "@/components/Button.vue";
+import Features from "@/components/Features.vue";
+import Gallery from "@/components/Gallery.vue";
 import { mapState } from "vuex";
 import BreadCrumps from "../components/BreadCrumps.vue";
 export default {
   components: {
     BreadCrumps,
+    Features,
+    Button,
+    Gallery,
   },
-  computed: { ...mapState(["products"]) },
+  computed: {
+    ...mapState(["products"]),
+    quanty() {
+      return this.$store.state.carrinho.quanty;
+    },
+  },
   mounted() {
     this.singleProduct();
     window.scrollTo(0, 0);
   },
-
   data() {
     return {
       item: "",
-      quanty: 1,
       itemName: "",
+      galeryVisible: false,
     };
   },
   methods: {
@@ -62,6 +86,20 @@ export default {
 
       this.item = checkItem;
       this.itemName = checkItem[0].name;
+      //console.log(this.$store.state.carrinho.carro);
+    },
+    addItem() {
+      this.$store.dispatch("actionAddCarrinho", this.item);
+    },
+    count(operator) {
+      if (operator === "+") {
+        this.$store.dispatch("actionAddCount", 1);
+      } else if (operator === "-") {
+        this.$store.dispatch("actionDeletCount", 1);
+      }
+    },
+    handleGallery() {
+      this.galeryVisible = true;
     },
   },
 };
@@ -87,13 +125,13 @@ export default {
   height: 60vh;
   width: 100%;
 }
-.common-container-image {
+.common-container-images {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.common-image {
+.common-images {
   height: 20vh;
   width: 30%;
 }
@@ -107,22 +145,34 @@ img {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 1vh;
   h2 {
     padding-bottom: 5%;
   }
-  p {
+  .price {
     font-size: 1.5rem;
     padding-bottom: 6%;
+  }
+  .description {
+    text-align: left;
+    color: var(--colorText);
+    font-family: Pt-Sans-Regular;
+    font-size: 1.5rem;
+    padding: 5% 0%;
   }
   span {
     color: var(--colorText);
     font-weight: 700;
     font-family: "PT-Sans-Regular";
   }
+  button {
+    width: 100%;
+  }
 }
 .quanty-container {
   display: flex;
   width: 100%;
+  margin: 5% 0%;
   button {
     background-color: white;
     padding: 1rem;
@@ -138,5 +188,9 @@ img {
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
   border: none;
+  font-family: "PT-Sans-Regular";
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--colorText);
 }
 </style>
