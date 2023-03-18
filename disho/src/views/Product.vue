@@ -27,6 +27,7 @@ export default {
   },
   mounted() {
     this.singleProduct();
+    window.scrollTo(0, 0);
   },
   computed: {
     ...mapState(["products"]),

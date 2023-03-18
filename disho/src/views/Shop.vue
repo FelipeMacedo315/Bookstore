@@ -75,6 +75,7 @@ export default {
     this.fetchProducts(
       `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
     );
+    this.$store.dispatch("actionCurrentPage", 1);
   },
   data() {
     return {
