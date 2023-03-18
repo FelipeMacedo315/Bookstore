@@ -1,12 +1,12 @@
 <template>
   <div class="gallery">
     <img class="main-image" v-bind:src="imagesProduct[indexMainImage]" />
-    <div class="common-container-images">
+    <div class="common-container-images-gallery">
       <img
         v-for="(img, index) in imagesProduct"
         v-on:click="viewImage(index)"
         :key="index"
-        class="common-images"
+        class="common-images-gallery"
         v-bind:src="img"
         alt=""
       />
@@ -16,6 +16,9 @@
     </button>
     <button class="btn-plus" v-on:click="handleSlide('+')">
       <fa icon="arrow-right"></fa>
+    </button>
+    <button v-on:click="$emit('closeGallery', false)" class="btn-close">
+      <fa icon="close"></fa>
     </button>
     <span>{{ paginationSlide }} /{{ imagesProduct.length }}</span>
   </div>
@@ -65,19 +68,9 @@ export default {
   }
   .main-image {
     object-fit: fill;
+    cursor: auto;
   }
-  .common-container-images {
-    display: block;
-  }
-  .common-images {
-    width: 15%;
-    border: solid transparent;
-    border-radius: 1rem;
 
-    &:hover {
-      border: solid var(--colorText);
-    }
-  }
   .btn-plus {
     position: absolute;
     bottom: 50%;
@@ -88,13 +81,20 @@ export default {
     bottom: 50%;
     right: 101%;
   }
+  .btn-close {
+    position: absolute;
+    top: 2%;
+    right: 1%;
+  }
   .btn-plus,
-  .btn-minus {
-    background-color: var(--grayLight);
+  .btn-minus,
+  .btn-close {
+    background-color: var(--colorText);
     font-size: 5vh;
-    color: var(--colorText);
+    color: var(--colorWhite);
     width: 3vw;
     border: none;
+    cursor: pointer;
     &:hover {
       opacity: 0.8;
     }
@@ -106,6 +106,19 @@ export default {
     width: 100%;
     font-size: 1.5rem;
   }
+}
+.common-container-images-gallery {
+  display: flex;
+  justify-content: center;
+}
+.common-images-gallery {
+  width: 15%;
+  border: solid transparent 1px;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.common-images-gallery:hover {
+  border: solid var(--colorText) 1px;
 }
 #arrow-tranform {
   transform: rotate(180deg);

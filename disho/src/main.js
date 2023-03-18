@@ -16,6 +16,7 @@ import {
   faClockFour,
   faLeaf,
   faArrowRight,
+  faClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -31,7 +32,8 @@ library.add(
   faTruck,
   faClockFour,
   faLeaf,
-  faArrowRight
+  faArrowRight,
+  faClose
 );
 
 createApp(App).component("fa", FontAwesomeIcon).use(store).use(router).mount("#app");
