@@ -7,7 +7,7 @@
       <a>|</a>
       <a>{{ itemName }}</a>
     </BreadCrumps>
-    <CardSingleProduct v-bind:item="item" />
+    <CardSingleProduct v-bind:product="item" />
     <Features />
   </main>
 </template>
@@ -48,13 +48,14 @@ export default {
       console.log(valueChild);
     },
 
-    singleProduct() {
-      const checkItem = this.products.filter((item) => {
-        return item._id === this.$route.params.id;
-      });
-
-      this.item = checkItem;
-      this.itemName = checkItem[0].name;
+    async singleProduct() {
+      const x = await fetch(
+        `https://api-disho.up.railway.app/DishoApi/fruits/${this.$route.params.id}`
+      );
+      const checkItem = await x.json();
+      this.item = await checkItem;
+      this.itemName = await checkItem.name;
+      console.log(checkItem);
       //console.log(this.$store.state.carrinho.carro);
     },
   },
