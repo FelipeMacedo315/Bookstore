@@ -8,7 +8,7 @@
           v-bind:src="product.image[0]"
           alt=""
         />
-        <section class="common-container-images">
+        <component class="common-container-images">
           <img
             v-on:click="galeryVisible = true"
             v-for="(commonImages, index) in product.image.slice(1)"
@@ -16,7 +16,7 @@
             v-bind:src="commonImages"
             v-bind:alt="commonImages"
           />
-        </section>
+        </component>
       </div>
       <div class="info">
         <h2 class="logo">{{ product.name }}</h2>
@@ -38,19 +38,24 @@
           adipisci aut laudantium pariatur officia similique? Ullam, perferendis!
         </p>
       </div>
-      <section v-if="product" v-show="galeryVisible">
+      <component v-if="product" v-show="galeryVisible">
         <Gallery v-on:closeGallery="closingGallery" v-bind:imagesProduct="product.image" />
-      </section>
+      </component>
+      <component v-show="modalVisible">
+        <ModalLoginVue />
+      </component>
     </div>
   </div>
 </template>
 
 <script>
 import Gallery from "./Gallery.vue";
+import ModalLoginVue from "./ModalLogin.vue";
 export default {
   props: ["product"],
   components: {
     Gallery,
+    ModalLoginVue,
   },
   computed: {
     quanty() {
@@ -61,11 +66,13 @@ export default {
   data() {
     return {
       galeryVisible: false,
+      modalVisible: false,
     };
   },
   methods: {
     addItem() {
       this.$store.dispatch("actionAddCarrinho", this.item);
+      this.modalVisible = true;
     },
     count(operator) {
       if (operator === "+") {
