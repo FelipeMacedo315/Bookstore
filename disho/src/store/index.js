@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import carrinho from "./carrinho";
+import user from "./user";
 
 export default createStore({
   state: {
@@ -66,5 +67,6 @@ export default createStore({
   },
   modules: {
     carrinho,
+    user,
   },
 });

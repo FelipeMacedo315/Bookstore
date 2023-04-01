@@ -2,12 +2,7 @@
   <div>
     <div v-if="product" class="product-gallery">
       <div class="images-product">
-        <img
-          v-on:click="galeryVisible = true"
-          class="main-image"
-          v-bind:src="product.image[0]"
-          alt=""
-        />
+        <img v-on:click="galeryVisible = true" class="main-image" v-bind:src="product.image[0]" alt="" />
         <component class="common-container-images">
           <img
             v-on:click="galeryVisible = true"
@@ -28,21 +23,19 @@
           <button v-on:click="count('-')"><fa icon="minus"></fa></button>
           <button><fa icon="heart"></fa></button>
         </div>
-        <button v-on:click="addItem" class="btn-green">
-          <fa icon="cart-shopping"></fa> Add to Cart
-        </button>
+        <button v-on:click="addItem" class="btn-green"><fa icon="cart-shopping"></fa> Add to Cart</button>
 
         <p class="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nobis facere. Pariatur iure
-          molestias distinctio obcaecati libero maxime magni explicabo? Excepturi voluptatibus,
-          adipisci aut laudantium pariatur officia similique? Ullam, perferendis!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nobis facere. Pariatur iure molestias
+          distinctio obcaecati libero maxime magni explicabo? Excepturi voluptatibus, adipisci aut laudantium pariatur
+          officia similique? Ullam, perferendis!
         </p>
       </div>
       <component v-if="product" v-show="galeryVisible">
         <Gallery v-on:closeGallery="closingGallery" v-bind:imagesProduct="product.image" />
       </component>
       <component v-show="modalVisible">
-        <ModalLoginVue />
+        <ModalLoginVue v-on:emitterToSingleCard="receiverChildModal" />
       </component>
     </div>
   </div>
@@ -83,6 +76,9 @@ export default {
     },
     closingGallery(valueC) {
       this.galeryVisible = valueC;
+    },
+    receiverChildModal(childValue) {
+      this.modalVisible = childValue;
     },
   },
 };

@@ -30,7 +30,7 @@ export default {
     window.scrollTo(0, 0);
   },
   computed: {
-    ...mapState(["products"]),
+    ...mapState(["products", "typeProduct"]),
     quanty() {
       return this.$store.state.carrinho.quanty;
     },
@@ -50,7 +50,7 @@ export default {
 
     async singleProduct() {
       const x = await fetch(
-        `https://api-disho.up.railway.app/DishoApi/fruits/${this.$route.params.id}`
+        `http://localhost:3000/DishoApi/${this.typeProduct}/${this.$route.params.id}`
       );
       const checkItem = await x.json();
       this.item = await checkItem;

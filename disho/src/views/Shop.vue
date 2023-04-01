@@ -56,25 +56,18 @@ import CardProduct from "../components/CardProduct.vue";
 import BreadCrumps from "../components/BreadCrumps.vue";
 import { mapActions, mapState, Store } from "vuex";
 import store from "@/store";
-
 export default {
   computed: { ...mapState(["products", "typeProduct", "currentPage", "totalPages", "totalItems"]) },
   watch: {
     typeProduct(current, old) {
-      this.fetchProducts(
-        `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
-      );
+      this.fetchProducts(`${this.urlLocalHost}${this.typeProduct}?page=${this.currentPage}`);
     },
     currentPage() {
-      this.fetchProducts(
-        `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
-      );
+      this.fetchProducts(`${this.urlLocalHost}${this.typeProduct}?page=${this.currentPage}`);
     },
   },
   mounted() {
-    this.fetchProducts(
-      `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
-    );
+    this.fetchProducts(`${this.urlLocalHost}${this.typeProduct}?page=${this.currentPage}`);
     this.$store.dispatch("actionCurrentPage", 1);
   },
   data() {
@@ -83,6 +76,8 @@ export default {
       btnStatus: false,
       btnA: true,
       btnG: false,
+      // urlServerRailway: "https://api-disho.up.railway.app/DishoApi/",
+      urlLocalHost: "http://localhost:3000/DishoApi/",
     };
   },
   methods: {
@@ -112,8 +107,7 @@ export default {
     },
     filterItems(valueOfChildreen) {
       this.fetchProducts(
-        "https://api-disho.up.railway.app/DishoApi/" +
-          this.typeProduct +
+        this.typeProduct +
           "/filter?page=" +
           this.currentPage +
           "&" +
@@ -126,9 +120,7 @@ export default {
     },
     cancelFilter(valueChildreen) {
       if (valueChildreen) {
-        this.fetchProducts(
-          `https://api-disho.up.railway.app/DishoApi/${this.typeProduct}?page=${this.currentPage}`
-        );
+        this.fetchProducts(`${this.urlLocalHost}${this.typeProduct}?page=${this.currentPage}`);
       } else {
         null;
       }
