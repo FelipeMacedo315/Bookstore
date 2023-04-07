@@ -2,27 +2,25 @@
   <footer>
     <div class="infos">
       <h1 class="logo">Disho</h1>
-      <p class="txt-subtitle">
-        Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus
-      </p>
+      <p class="txt-subtitle">Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus</p>
       <div class="container-social-media">
         <img class="social-media-icon" src="../assets/facebook.png" alt="facebook-icon" />
         <img class="social-media-icon" src="../assets/instagram.png" alt="facebook-icon" />
         <img class="social-media-icon" src="../assets/whatsapp.png" alt="facebook-icon" />
         <img class="social-media-icon" src="../assets/youtube.png" alt="facebook-icon" />
-        <img
-          class="social-media-icon"
-          src="../assets/logotipo-do-linkedin.png"
-          alt="facebook-icon"
-        />
+        <img class="social-media-icon" src="../assets/logotipo-do-linkedin.png" alt="facebook-icon" />
       </div>
     </div>
     <div class="contact">
-      <Circle imgCircle="placeholder.png" circleClass="circle-big" />
+      <Circle background="#ffffff" color="#7eb23d" size="25vh" sizeText="4em">
+        <fa icon="location-dot"></fa>
+      </Circle>
       <p class="txt-adress">350 Bay Meadows St. Reynoldsburg, OH 43068</p>
     </div>
     <div class="timetable">
-      <Circle imgCircle="phone-call.png" circleClass="circle-big" />
+      <Circle background="#ffffff" color="#7eb23d" size="25vh" sizeText="4em">
+        <fa icon="headset"></fa>
+      </Circle>
       <div class="timetable-txt">
         <p class="txt-subtitle">Mon - Fri: 9:00 am - 9:00 pm</p>
         <p class="txt-adress">+1-202-555-0168</p>
@@ -44,16 +42,16 @@ export default {
 footer {
   background-color: var(--colorWhite);
   display: grid;
-  grid-template-columns: 20% 35% 35%;
-  column-gap: 5%;
-  padding: 10% 2% 2% 2%;
+  grid-template-columns: 25% 35% 35%;
+  column-gap: 2%;
+  padding: 5% 1% 3% 1%;
   align-items: flex-start;
 }
 .infos {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   row-gap: 2vh;
   p {
     text-align: left;
@@ -72,6 +70,8 @@ footer {
   font-family: viga;
   font-size: 2rem;
   color: var(--colorDisho);
+  width: 60%;
+  font-size: 1.6em;
 }
 
 .contact,

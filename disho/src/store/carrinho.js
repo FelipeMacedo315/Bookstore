@@ -1,13 +1,8 @@
 export default {
   state: {
-    produtos: [],
     quanty: 1,
   },
   mutations: {
-    mutationAddCarrinho(state, data) {
-      state.produtos = data;
-      console.log(state.produtos);
-    },
     mutationAddCount(state, data) {
       state.quanty = state.quanty + data;
     },
@@ -23,7 +18,7 @@ export default {
       context.commit("mutationAddCount", data);
     },
     actionDeletCount(context, data) {
-      context.commit("mutationDeletCount", data);
+      context.state.quanty <= 1 ? (context.state.quanty = 1) : context.commit("mutationDeletCount", data);
     },
   },
 };

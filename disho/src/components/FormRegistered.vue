@@ -106,10 +106,13 @@ export default {
         .then((result) => {
           this.showFeedBack = true;
           this.contentFeedback = result.data.msg;
+          localStorage.setItem("logged", true);
+          localStorage.setItem("token", result.data.token);
+
           setTimeout(() => {
             this.showFeedBack = false;
             this.$emit("emitterToModal", false);
-          }, 3000);
+          }, 2000);
         })
         .catch((err) => {
           this.showFeedBack = true;

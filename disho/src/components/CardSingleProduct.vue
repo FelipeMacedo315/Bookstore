@@ -26,9 +26,8 @@
         <button v-on:click="addItem" class="btn-green"><fa icon="cart-shopping"></fa> Add to Cart</button>
 
         <p class="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nobis facere. Pariatur iure molestias
-          distinctio obcaecati libero maxime magni explicabo? Excepturi voluptatibus, adipisci aut laudantium pariatur
-          officia similique? Ullam, perferendis!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nobis facere. Pariatur iure molestias distinctio obcaecati libero
+          maxime magni explicabo? Excepturi voluptatibus, adipisci aut laudantium pariatur officia similique? Ullam, perferendis!
         </p>
       </div>
       <component v-if="product" v-show="galeryVisible">
@@ -44,6 +43,7 @@
 <script>
 import Gallery from "./Gallery.vue";
 import ModalLoginVue from "./ModalLogin.vue";
+import axios from "axios";
 export default {
   props: ["product"],
   components: {
@@ -64,8 +64,28 @@ export default {
   },
   methods: {
     addItem() {
-      this.$store.dispatch("actionAddCarrinho", this.item);
-      this.modalVisible = true;
+      // this.$store.dispatch("actionAddCarrinho", this.item);
+      if (localStorage.getItem("logged")) {
+        this.modalVisible = false;
+        axios
+          .put(`http://localhost:3000/DishoApi/User/set-cart/${localStorage.getItem("token")}`, {
+            idItem: this.product._id,
+            nameItem: this.product.name,
+            priceItem: this.product.price,
+            imgItem: this.product.image[0],
+            qtd: this.quanty,
+          })
+          .then((result) => {
+            if (result.status === 200) {
+              this.$router.push(`/ShoppingCart/${localStorage.getItem("token")}`);
+            }
+          })
+          .catch((err) => {
+            alert(err.response.data.msg);
+          });
+      } else {
+        this.modalVisible = true;
+      }
     },
     count(operator) {
       if (operator === "+") {

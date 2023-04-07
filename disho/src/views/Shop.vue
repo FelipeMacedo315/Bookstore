@@ -25,12 +25,7 @@
         </div>
         <div class="container-products">
           <component v-for="(items, index) in products">
-            <CardProduct
-              v-bind:name="items.name"
-              v-bind:price="items.price"
-              v-bind:img="items.image[0]"
-              v-bind:id="items._id"
-            />
+            <CardProduct v-bind:name="items.name" v-bind:price="items.price" v-bind:img="items.image[0]" v-bind:id="items._id" />
           </component>
         </div>
         <div class="pagination">
@@ -77,7 +72,7 @@ export default {
       btnA: true,
       btnG: false,
       // urlServerRailway: "https://api-disho.up.railway.app/DishoApi/",
-      urlLocalHost: "http://localhost:3000/DishoApi/",
+      urlLocalHost: `http://localhost:3000/DishoApi/`,
     };
   },
   methods: {
@@ -107,7 +102,8 @@ export default {
     },
     filterItems(valueOfChildreen) {
       this.fetchProducts(
-        this.typeProduct +
+        this.urlLocalHost +
+          this.typeProduct +
           "/filter?page=" +
           this.currentPage +
           "&" +

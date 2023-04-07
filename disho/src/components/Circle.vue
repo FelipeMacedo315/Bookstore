@@ -1,43 +1,33 @@
 <template>
-  <div v-bind:class="circleClass">
-    <img v-bind:src="require(`../assets/${imgCircle}`)" v-bind:alt="imgCircle" />
+  <div class="circle">
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["imgCircle", "circleClass"],
+  props: ["background", "color", "size", "sizeText"],
 };
 </script>
 
 <style lang="scss">
-.circle-small {
-  background-color: white;
-  padding: 10%;
-  border-radius: 24px;
-  background: #ffffff;
-  box-shadow: 0px 2px 15px rgba(183, 189, 196, 0.570852);
-
-  img {
-    height: 16px;
-  }
-}
-.circle-big {
-  background-color: white;
-  height: 25vh;
-  min-height: 25vh;
-  width: 25vh;
-  min-width: 25vh;
+.circle {
+  height: v-bind(size);
+  width: v-bind(size);
   border-radius: 50%;
+  background-color: v-bind(background);
+  box-shadow: 0px 2px 15px rgba(183, 189, 196, 0.570852);
+  color: v-bind(color);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  box-shadow: 0px 2px 15px rgba(183, 189, 196, 0.570852);
+  transition: 50ms;
+  font-size: v-bind(sizeText);
 
-  img {
-    height: 30%;
-    object-fit: cover;
+  cursor: pointer;
+  &:active {
+    background-color: var(--colorText);
+    color: red;
   }
 }
 </style>

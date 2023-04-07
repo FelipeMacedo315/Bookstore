@@ -17,6 +17,7 @@ export default {
   font-size: 1rem;
   border-radius: 3rem;
   border: none;
+  width: 100%;
   cursor: pointer;
 }
 :disabled {
@@ -29,6 +30,8 @@ export default {
   font-family: viga;
   padding: 0.9rem 12%;
   font-size: 1rem;
+  width: 100%;
+
   border-radius: 3rem;
   border: 1px groove var(--colorDisho);
   cursor: pointer;

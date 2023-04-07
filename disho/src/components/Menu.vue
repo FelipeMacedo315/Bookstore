@@ -11,8 +11,12 @@
     </ul>
     <Input typeInput="search" placeholder="Search for product..." />
     <div class="circle-container">
-      <Circle imgCircle="user.png" circleClass="circle-small" />
-      <Circle imgCircle="shopping.png" circleClass="circle-small" />
+      <Circle v-on:click="openCart" background="#ffffff" color="#264653" size="8vh">
+        <fa icon="cart-shopping"></fa>
+      </Circle>
+      <Circle v-on:click="openCart" background="#ffffff" color="#264653" size="8vh">
+        <fa icon="user"></fa>
+      </Circle>
     </div>
   </menu>
 </template>
@@ -24,6 +28,11 @@ export default {
   components: {
     Input,
     Circle,
+  },
+  methods: {
+    openCart() {
+      this.$router.push(`/ShoppingCart/${localStorage.getItem("token")}`);
+    },
   },
 };
 </script>
