@@ -44,8 +44,8 @@ footer {
   display: grid;
   grid-template-columns: 25% 35% 35%;
   column-gap: 2%;
-  padding: 5% 1% 3% 1%;
-  align-items: flex-start;
+  padding: 2% 1%;
+  max-height: 40vh;
 }
 .infos {
   height: 100%;

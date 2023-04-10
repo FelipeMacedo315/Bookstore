@@ -11,9 +11,14 @@ export default createStore({
     totalPages: 1,
     totalItems: "",
   },
-  getters: {},
+  getters: {
+    first3Notice(state) {
+      return state.healthNotices.slice(0, 3);
+    },
+  },
   mutations: {
     handleState(state, data) {
+      console.log(data);
       state.healthNotices = data;
     },
     handleProducts(state, data) {
@@ -52,17 +57,12 @@ export default createStore({
       context.commit("handleProducts", data);
     },
     healthAction(context, data) {
-      const news = data.results.slice(0, 3);
       //format date
-      data.results.forEach((element) => {
-        element.pubDate =
-          element.pubDate.slice(8, 10) +
-          "/" +
-          element.pubDate.slice(5, 7) +
-          "/" +
-          element.pubDate.slice(0, 4);
+      data.forEach((element) => {
+        element.pubDate = element.pubDate.slice(8, 10) + "/" + element.pubDate.slice(5, 7) + "/" + element.pubDate.slice(0, 4);
       });
-      context.commit("handleState", news);
+      console.log(data);
+      context.commit("handleState", data);
     },
   },
   modules: {

@@ -7,16 +7,22 @@
     <p class="txt-description-news">
       {{ descriptionNews.slice(0, descriptionNews.indexOf(".") + 1) }}
     </p>
-    <Button content="Read Moore" btnClass="btn-white" />
+    <Button v-on:click="toSinglePost(indexNotice)" content="Read Moore" btnClass="btn-white" />
   </div>
 </template>
 
 <script>
+import router from "@/router";
 import Button from "./Button.vue";
 export default {
-  props: ["titleNews", "imgUrl", "newsDate", "descriptionNews"],
+  props: ["titleNews", "imgUrl", "newsDate", "descriptionNews", "indexNotice"],
   components: {
     Button,
+  },
+  methods: {
+    toSinglePost(idxNotice) {
+      router.push(`/singlePost/${idxNotice}`);
+    },
   },
 };
 </script>

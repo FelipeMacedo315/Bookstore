@@ -192,13 +192,14 @@ a {
   text-decoration: none;
 }
 .continue-shopping {
-  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
+
   a {
     display: flex;
+
     p {
       padding-right: 1vh;
     }

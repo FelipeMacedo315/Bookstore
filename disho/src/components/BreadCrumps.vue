@@ -11,7 +11,7 @@
   align-items: center;
   margin: 0% 2%;
   margin-top: 1vh;
-  padding: 1.5rem 0% 1.5rem 20%;
+  padding: 1.5rem 0% 1.5rem 10%;
   grid-area: breadCrumps;
   a {
     text-decoration: none;

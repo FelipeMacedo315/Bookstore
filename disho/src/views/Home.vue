@@ -2,7 +2,7 @@
   <main class="page-home">
     <Header />
     <Features />
-    <Blog />
+    <Notices />
     <Promotion />
   </main>
 </template>
@@ -10,7 +10,7 @@
 <script>
 import Header from "../components/Header.vue";
 import Vantagens from "../components/VantagensCard.vue";
-import Blog from "../components/Blog.vue";
+import Notices from "../components/Notices.vue";
 import Footer from "../components/Footer.vue";
 import Promotion from "../components/Promotion.vue";
 import Features from "@/components/Features.vue";
@@ -18,7 +18,7 @@ export default {
   components: {
     Header,
     Vantagens,
-    Blog,
+    Notices,
     Footer,
     Promotion,
     Features,

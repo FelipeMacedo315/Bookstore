@@ -3,6 +3,8 @@ import Home from "../views/Home.vue";
 import Shop from "../views/Shop.vue";
 import BuyProduct from "../views/BuyProduct.vue";
 import ShoppingCart from "../views/ShoppingCart.vue";
+import SinglePost from "../views/SinglePost.vue";
+import Blog from "../views/Blog.vue";
 const routes = [
   {
     path: "/",
@@ -23,6 +25,16 @@ const routes = [
     component: BuyProduct,
   },
   { path: "/ShoppingCart/:id", name: "shoppingCart", component: ShoppingCart },
+  {
+    path: "/singlePost/:idNotice",
+    name: "singlePost",
+    component: SinglePost,
+  },
+  {
+    path: "/blog",
+    name: "blog",
+    component: Blog,
+  },
 ];
 
 const router = createRouter({

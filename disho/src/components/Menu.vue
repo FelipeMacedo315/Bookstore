@@ -6,7 +6,7 @@
     <ul class="sections-menu">
       <router-link to="/"> Home </router-link>
       <router-link to="/shop"> Shop </router-link>
-      <li>Blog</li>
+      <router-link to="/blog"> Blog </router-link>
       <li>Contacts</li>
     </ul>
     <Input typeInput="search" placeholder="Search for product..." />

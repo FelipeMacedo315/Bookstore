@@ -28,12 +28,17 @@ export default {
   background-color: var(--colorWhite);
   color: var(--colorDisho);
   font-family: viga;
-  padding: 0.9rem 12%;
+  padding: 0.9rem;
   font-size: 1rem;
+  font-weight: 400;
   width: 100%;
-
   border-radius: 3rem;
   border: 1px groove var(--colorDisho);
+  transition: 400ms;
   cursor: pointer;
+  &:hover {
+    background-color: var(--colorText);
+    color: var(--colorWhite);
+  }
 }
 </style>
