@@ -5,6 +5,7 @@ import BuyProduct from "../views/BuyProduct.vue";
 import ShoppingCart from "../views/ShoppingCart.vue";
 import SinglePost from "../views/SinglePost.vue";
 import Blog from "../views/Blog.vue";
+import Contact from "@/views/Contact.vue";
 const routes = [
   {
     path: "/",
@@ -34,6 +35,11 @@ const routes = [
     path: "/blog",
     name: "blog",
     component: Blog,
+  },
+  {
+    path: "/contact",
+    name: "contact",
+    component: Contact,
   },
 ];
 

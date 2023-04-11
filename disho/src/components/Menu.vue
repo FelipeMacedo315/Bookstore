@@ -7,7 +7,7 @@
       <router-link to="/"> Home </router-link>
       <router-link to="/shop"> Shop </router-link>
       <router-link to="/blog"> Blog </router-link>
-      <li>Contacts</li>
+      <router-link to="/contact">Contact</router-link>
     </ul>
     <Input typeInput="search" placeholder="Search for product..." />
     <div class="circle-container">

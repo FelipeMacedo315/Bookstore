@@ -58,7 +58,7 @@ footer {
   }
 }
 .container-social-media {
-  width: 100%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: space-between;

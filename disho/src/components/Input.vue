@@ -20,6 +20,17 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  button {
+    height: 100%;
+    width: 20%;
+    background-color: var(--colorBtn);
+    border: none;
+    border-top-right-radius: 26px;
+    border-bottom-right-radius: 26px;
+    img {
+      filter: invert(100%);
+    }
+  }
   input {
     font-size: 1rem;
     box-sizing: content-box;
@@ -38,17 +49,6 @@ export default {
   #icon-glass {
     color: white;
     font-size: 1.5rem;
-  }
-  button {
-    height: 100%;
-    width: 20%;
-    background-color: var(--colorBtn);
-    border: none;
-    border-top-right-radius: 26px;
-    border-bottom-right-radius: 26px;
-    img {
-      filter: invert(100%);
-    }
   }
 }
 </style>

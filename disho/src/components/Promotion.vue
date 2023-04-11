@@ -19,6 +19,7 @@ export default {
 
 <style lang="scss">
 .promotion-container {
+  height: 10vh;
   padding: 10vh 0;
   display: flex;
   justify-content: space-around;
