@@ -1,7 +1,9 @@
 <template>
   <main class="contact-page">
     <BreadCrumps>
-      <a>Contact </a>
+      <a>Home </a>
+      <a>|</a>
+      <a>Contact</a>
     </BreadCrumps>
     <img id="img-contact" src="../assets/foto_hortifruti_v07.jpg" alt="fruits-image" />
     <div class="contacts">

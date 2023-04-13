@@ -4,15 +4,15 @@
       <h2 class="txt-title">Save 20% on first shopping</h2>
       <p>Sign Up to Newsletter</p>
     </div>
-    <Input type="e-mail" placeholder="Email" />
+    <FieldInput typeInput="email" placeholder="Email" />
   </section>
 </template>
 
 <script>
-import Input from "./Input.vue";
+import FieldInput from "./FieldInput.vue";
 export default {
   components: {
-    Input,
+    FieldInput,
   },
 };
 </script>

@@ -49,39 +49,40 @@
 import SideBar from "../components/SideBar.vue";
 import CardProduct from "../components/CardProduct.vue";
 import BreadCrumps from "../components/BreadCrumps.vue";
-import { mapActions, mapState, Store } from "vuex";
+import { mapActions, mapState } from "vuex";
 import store from "@/store";
 export default {
-  computed: { ...mapState(["products", "typeProduct", "currentPage", "totalPages", "totalItems"]) },
+  computed: {
+    ...mapState(["products", "typeProduct", "currentPage", "totalPages", "totalItems"]),
+    ...mapState("searchProduct", ["searchProduct"]),
+    ...mapActions(["fetchProducts", "fetchFilterProducts"]),
+  },
   watch: {
+    // Monitorando quando os estados mudam
     typeProduct(current, old) {
-      this.fetchProducts(`${this.urlLocalHost}${this.typeProduct}?page=${this.currentPage}`);
+      this.fetchProducts;
     },
     currentPage() {
-      this.fetchProducts(`${this.urlLocalHost}${this.typeProduct}?page=${this.currentPage}`);
+      this.fetchProducts;
     },
   },
   mounted() {
-    this.fetchProducts(`${this.urlLocalHost}${this.typeProduct}?page=${this.currentPage}`);
+    if (!this.searchProduct.length) {
+      this.fetchProducts;
+    }
     this.$store.dispatch("actionCurrentPage", 1);
   },
+
   data() {
     return {
       optionSort: "",
       btnStatus: false,
-      btnA: true,
-      btnG: false,
+
       // urlServerRailway: "https://api-disho.up.railway.app/DishoApi/",
       urlLocalHost: `http://localhost:3000/DishoApi/`,
     };
   },
   methods: {
-    fetchProducts(urlDefault) {
-      fetch(urlDefault)
-        .then((response) => response.json())
-        .then((data) => store.dispatch("productsAction", data))
-        .catch((err) => console.log(err));
-    },
     orderedBy(value) {
       this.optionSort = value.target.value;
       switch (this.optionSort) {
@@ -101,22 +102,26 @@ export default {
       window.scrollTo(0, 0);
     },
     filterItems(valueOfChildreen) {
-      this.fetchProducts(
-        this.urlLocalHost +
-          this.typeProduct +
-          "/filter?page=" +
-          this.currentPage +
-          "&" +
-          "nameItem=" +
-          valueOfChildreen.currentTag +
-          "&" +
-          "maxPrice=" +
-          valueOfChildreen.currentValue
+      store.dispatch(
+        "fetchFilterProducts",
+        `http://localhost:3000/DishoApi/${this.typeProduct}/filter?&page=${this.currentPage}&nameItem=${valueOfChildreen.currentTag}&maxPrice=${valueOfChildreen.currentValue}`
       );
+      // this.fetchProducts(
+      //   this.urlLocalHost +
+      //     this.typeProduct +
+      //     "/filter?page=" +
+      //     this.currentPage +
+      //     "&" +
+      //     "nameItem=" +
+      //     valueOfChildreen.currentTag +
+      //     "&" +
+      //     "maxPrice=" +
+      //     valueOfChildreen.currentValue
+      // );
     },
-    cancelFilter(valueChildreen) {
-      if (valueChildreen) {
-        this.fetchProducts(`${this.urlLocalHost}${this.typeProduct}?page=${this.currentPage}`);
+    cancelFilter(valueofSideBar) {
+      if (valueofSideBar) {
+        store.dispatch("fetchProducts");
       } else {
         null;
       }

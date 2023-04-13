@@ -9,7 +9,7 @@
       <router-link to="/blog"> Blog </router-link>
       <router-link to="/contact">Contact</router-link>
     </ul>
-    <Input typeInput="search" placeholder="Search for product..." />
+    <FieldInput typeInput="search" placeholder="Search for product..." />
     <div class="circle-container">
       <Circle v-on:click="openCart" background="#ffffff" color="#264653" size="8vh">
         <fa icon="cart-shopping"></fa>
@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import Input from "../components/Input.vue";
+import FieldInput from "./FieldInput.vue";
 import Circle from "./Circle.vue";
 export default {
   components: {
-    Input,
+    FieldInput,
     Circle,
   },
   methods: {

@@ -1,7 +1,9 @@
 <template>
   <main v-if="healthNotices.length" class="blog-page">
     <BreadCrumps>
-      <a>Blog </a>
+      <a>Home </a>
+      <a>|</a>
+      <a>Blog</a>
     </BreadCrumps>
     <div class="post" v-for="(notice, index) in healthNotices">
       <img v-if="notice.image_url" v-bind:src="notice.image_url" alt="notice-image" />

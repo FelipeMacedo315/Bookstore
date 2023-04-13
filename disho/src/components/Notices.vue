@@ -1,5 +1,5 @@
 <template>
-  <section class="blog">
+  <section v-if="first3Notice.length" class="blog">
     <h1 class="txt-title">From the Blog</h1>
     <p class="txt-subtitle">Pretium quam vulputate dignissim suspendisse in est ante. Ac felis donec et odio pellentesque diam</p>
     <div class="container-slides">
@@ -13,6 +13,9 @@
         />
       </div>
     </div>
+  </section>
+  <section v-else>
+    <h1>carregando</h1>
   </section>
 </template>
 

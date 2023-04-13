@@ -19,6 +19,9 @@ export default {
   border: none;
   width: 100%;
   cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
 }
 :disabled {
   opacity: 0.5;

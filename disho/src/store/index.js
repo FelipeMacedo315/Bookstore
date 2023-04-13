@@ -1,7 +1,8 @@
 import { createStore } from "vuex";
 import carrinho from "./carrinho";
 import user from "./user";
-
+import searchProduct from "./searchProduct";
+import axios from "axios";
 export default createStore({
   state: {
     healthNotices: "",
@@ -38,13 +39,23 @@ export default createStore({
     },
   },
   actions: {
-    productsAction(context, data) {
+    async fetchProducts(context, payload) {
+      const fetchItems = await axios.get(`http://localhost:3000/DishoApi/${context.state.typeProduct}?&page=${context.state.currentPage}`);
+      const resultsFetch = fetchItems.data;
       //ordena os items do array em um padrão
-      data.products.sort((a, b) => b.name.length - a.name.length);
-      context.commit("handleProducts", data.products);
-      context.commit("handleTotalItems", data.totalItems);
-      context.commit("handleTotalPages", data.nextPage);
-      console.log(data);
+      resultsFetch.products.sort((a, b) => b.name.length - a.name.length);
+      context.commit("handleProducts", resultsFetch.products);
+      context.commit("handleTotalItems", resultsFetch.totalItems);
+      context.commit("handleTotalPages", resultsFetch.nextPage);
+    },
+    async fetchFilterProducts(context, payload) {
+      console.log(payload);
+      const fetchItems = await axios.get(payload);
+      const resultsFetch = fetchItems.data;
+      console.log(resultsFetch);
+      context.commit("handleProducts", resultsFetch.products);
+      context.commit("handleTotalItems", resultsFetch.totalItems);
+      context.commit("handleTotalPages", resultsFetch.nextPage);
     },
     navigate(context, data) {
       context.commit("handleStateType", data);
@@ -58,15 +69,17 @@ export default createStore({
     },
     healthAction(context, data) {
       //format date
+
       data.forEach((element) => {
         element.pubDate = element.pubDate.slice(8, 10) + "/" + element.pubDate.slice(5, 7) + "/" + element.pubDate.slice(0, 4);
+        element.description === null ? (element.description = "nenhum") : null;
       });
-      console.log(data);
       context.commit("handleState", data);
     },
   },
   modules: {
     carrinho,
     user,
+    searchProduct,
   },
 });
