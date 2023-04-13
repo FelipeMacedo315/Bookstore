@@ -16,13 +16,8 @@
     <p id="notice" class="txt-subtitle">{{ healthNotices[idxNotice].content }}</p>
   </div>
   <div class="notice-indisponible" v-else>
-    <h1 class="txt-title">Esta noticia não esta mais disponível. Ir para o Blog para ver noticias semelhantes ?</h1>
-    <div class="continue-shopping">
-      <router-link to="/blog">
-        <p class="txt-title">Blog</p>
-        <CircleVue background="#7eb23d" color="#ffffff" size="2em" sizeText="1rem"> <fa icon="arrow-right"></fa> </CircleVue>
-      </router-link>
-    </div>
+    <h1 class="txt-title">Carregando</h1>
+    <div class="continue-shopping"></div>
   </div>
 </template>
 
@@ -30,6 +25,11 @@
 import CircleVue from "@/components/Circle.vue";
 import { mapState } from "vuex";
 import BreadCrumps from "@/components/BreadCrumps.vue";
+import axios from "axios";
+import store from "@/store";
+
+const urlApi = "https://newsdata.io/api/1/news?&country=br&category=health&apikey=";
+const keyApi = "pub_1468049882dfef310db635e9584aa75a7b1e2";
 export default {
   components: {
     CircleVue,
@@ -37,7 +37,14 @@ export default {
   },
   mounted() {
     window.scrollTo(0, 0);
+    axios
+      .get(urlApi + keyApi)
+      .then((response) => {
+        store.dispatch("healthAction", response.data.results);
+      })
+      .catch((err) => console.log(err));
   },
+
   computed: {
     ...mapState(["healthNotices"]),
   },

@@ -14,7 +14,11 @@ export default createStore({
   },
   getters: {
     first3Notice(state) {
-      return state.healthNotices.slice(0, 3);
+      if (state.healthNotices.length) {
+        return state.healthNotices.slice(0, 3);
+      } else {
+        return ["hbhbhbhbhbhbhbhbh"];
+      }
     },
   },
   mutations: {
@@ -69,7 +73,6 @@ export default createStore({
     },
     healthAction(context, data) {
       //format date
-
       data.forEach((element) => {
         element.pubDate = element.pubDate.slice(8, 10) + "/" + element.pubDate.slice(5, 7) + "/" + element.pubDate.slice(0, 4);
         element.description === null ? (element.description = "nenhum") : null;

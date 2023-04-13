@@ -4,9 +4,10 @@
     <img class="news-img" v-else="imgUrl" src="../assets/galeria-placeholder.jpeg" />
     <p class="txt-date">{{ newsDate }}</p>
     <h2 class="txt-title-news">{{ titleNews }}</h2>
-    <p class="txt-description-news">
+    <p v-if="descriptionNews" class="txt-description-news">
       {{ descriptionNews.slice(0, descriptionNews.indexOf(".") + 1) }}
     </p>
+
     <Button v-on:click="toSinglePost(indexNotice)" content="Read Moore" btnClass="btn-white" />
   </div>
 </template>
