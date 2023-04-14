@@ -7,19 +7,13 @@
         {{ field }}
         <input v-on:change="checkForm($event)" v-bind:name="field" v-bind:type="field" />
         <!-- check field NAME  -->
-        <small v-if="field === 'Name' && this.$store.state.user.user.name === 'invalid'">
-          {{ field }} Minimum 2 caracter
-        </small>
+        <small v-if="field === 'Name' && this.$store.state.user.user.name === 'invalid'"> {{ field }} Minimum 2 caracter </small>
         <small v-else></small>
         <!-- check field EMAIL -->
-        <small v-if="field === 'Email' && this.$store.state.user.user.email === 'invalid'">
-          {{ field }} invalido
-        </small>
+        <small v-if="field === 'Email' && this.$store.state.user.user.email === 'invalid'"> {{ field }} invalido </small>
         <small v-else></small>
         <!-- check field PASSWORD -->
-        <small v-if="field === 'Password' && this.$store.state.user.user.password === 'invalid'">
-          {{ field }} Minimum 3 caracter</small
-        >
+        <small v-if="field === 'Password' && this.$store.state.user.user.password === 'invalid'"> {{ field }} Minimum 3 caracter</small>
         <small v-else></small>
       </label>
     </form>
@@ -41,9 +35,13 @@
 import store from "@/store";
 import Feedback from "./FeedBack.vue";
 import axios from "axios";
+import { mapActions, mapState } from "vuex";
 export default {
   components: {
     Feedback,
+  },
+  computed: {
+    ...mapActions("user", ["actOpenModal"]),
   },
   props: ["fields", "mission", "option", "urlServer"],
   mounted() {
@@ -111,7 +109,8 @@ export default {
 
           setTimeout(() => {
             this.showFeedBack = false;
-            this.$emit("emitterToModal", false);
+            store.dispatch("user/actOpenModal", false);
+            window.location.reload();
           }, 2000);
         })
         .catch((err) => {
@@ -120,8 +119,7 @@ export default {
         });
     },
     modalClose() {
-      this.$emit("emitterToModal", false);
-      this.showFeedBack = false;
+      store.dispatch("user/actOpenModal", false);
     },
   },
 };

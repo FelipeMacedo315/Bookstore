@@ -4,14 +4,12 @@
       <h1 class="logo">Disho</h1>
       <h2 class="txt-subtitle">Welcome to <span class="logo">Disho</span></h2>
       <p class="txt-subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, esse voluptas modi eaque nostrum dolor
-        laboriosam aliquam excepturi reiciendis praesentium, voluptatem provident culpa voluptate nemo illum, facere
-        delectus ut assumenda!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, esse voluptas modi eaque nostrum dolor laboriosam aliquam excepturi
+        reiciendis praesentium, voluptatem provident culpa voluptate nemo illum, facere delectus ut assumenda!
       </p>
     </div>
     <component class="form" v-if="haveCount">
       <FormRegistered
-        v-on:emitterToModal="receiverChildForm"
         v-on:loggin="handleLogin"
         v-bind:fields="['Email', 'Password']"
         mission="Login"
@@ -21,7 +19,6 @@
     </component>
     <component class="form" v-else>
       <FormRegistered
-        v-on:emitterToModal="receiverChildForm"
         v-on:loggin="handleLogin"
         v-bind:fields="['Name', 'Email', 'Password']"
         mission="Create Account"
@@ -48,9 +45,6 @@ export default {
   methods: {
     handleLogin(childValue) {
       this.haveCount = childValue;
-    },
-    receiverChildForm(childValue) {
-      this.$emit("emitterToSingleCard", childValue);
     },
   },
 };

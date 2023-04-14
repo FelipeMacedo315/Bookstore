@@ -33,17 +33,16 @@
       <component v-if="product" v-show="galeryVisible">
         <Gallery v-on:closeGallery="closingGallery" v-bind:imagesProduct="product.image" />
       </component>
-      <component v-show="modalVisible">
-        <ModalLoginVue v-on:emitterToSingleCard="receiverChildModal" />
-      </component>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 import Gallery from "./Gallery.vue";
 import ModalLoginVue from "./ModalLogin.vue";
 import axios from "axios";
+import store from "@/store";
 export default {
   props: ["product"],
   components: {
@@ -51,6 +50,8 @@ export default {
     ModalLoginVue,
   },
   computed: {
+    ...mapState("user", ["showModal"]),
+    ...mapActions("user", ["actOpenModal"]),
     quanty() {
       return this.$store.state.carrinho.quanty;
     },
@@ -59,14 +60,13 @@ export default {
   data() {
     return {
       galeryVisible: false,
-      modalVisible: false,
     };
   },
   methods: {
     addItem() {
       // this.$store.dispatch("actionAddCarrinho", this.item);
       if (localStorage.getItem("logged")) {
-        this.modalVisible = false;
+        store.dispatch("user/actOpenModal", false);
         axios
           .put(`http://localhost:3000/DishoApi/User/set-cart/${localStorage.getItem("token")}`, {
             idItem: this.product._id,
@@ -84,7 +84,7 @@ export default {
             alert(err.response.data.msg);
           });
       } else {
-        this.modalVisible = true;
+        store.dispatch("user/actOpenModal", true);
       }
     },
     count(operator) {
@@ -94,11 +94,8 @@ export default {
         this.$store.dispatch("actionDeletCount", 1);
       }
     },
-    closingGallery(valueC) {
-      this.galeryVisible = valueC;
-    },
-    receiverChildModal(childValue) {
-      this.modalVisible = childValue;
+    closingGallery(valueChild) {
+      this.galeryVisible = valueChild;
     },
   },
 };

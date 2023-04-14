@@ -86,10 +86,11 @@ export default {
   box-shadow: 0px 2px 12px rgba(183, 189, 196, 0.503551);
   display: grid;
   grid-template-columns: 50% 50%;
-  position: relative;
-  left: 15%;
-  right: 15%;
-  bottom: 20vh;
+  // position: relative;
+  // left: 15%;
+  // right: 15%;
+  // bottom: 20vh;
+  margin: -30vh 15% 10vh 15%;
   .infos {
     background-color: var(--colorWhite);
     h1 {

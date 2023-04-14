@@ -6,6 +6,7 @@ export default {
       email: "",
       password: "",
     },
+    showModal: false,
   },
   getters: {
     value: (state) => {
@@ -21,6 +22,9 @@ export default {
     },
     updatePassword(state, payload) {
       state.user.password = payload;
+    },
+    mutOpenModal(state, payload) {
+      state.showModal = payload;
     },
   },
   actions: {
@@ -53,6 +57,9 @@ export default {
       } else {
         commit("updatePassword", "invalid");
       }
+    },
+    actOpenModal({ commit }, payload) {
+      commit("mutOpenModal", payload);
     },
   },
 };

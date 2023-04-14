@@ -15,9 +15,7 @@
     <div class="slides">
       <CardSlide imgCard="comida-salada-alface-legumes-imagem-de-fundo.jpg" />
       <CardSlide imgCard="thinkstockphotos-613144376.webp" />
-      <CardSlide
-        imgCard="grapes-strawberries-pineapple-kiwi-apricot-banana-and-whole-pineapple.jpg"
-      />
+      <CardSlide imgCard="grapes-strawberries-pineapple-kiwi-apricot-banana-and-whole-pineapple.jpg" />
     </div>
   </header>
 </template>
@@ -63,8 +61,7 @@ header {
   }
 }
 .placeholder-img {
-  position: relative;
-  right: -10%;
+  margin-right: -10vh;
   width: 100vh;
   height: 100vh;
   border-radius: 50%;
@@ -84,9 +81,8 @@ header {
 .slides {
   padding: 0.5rem 0px;
   width: 100%;
-  position: absolute;
-  top: 90%;
+  margin-top: -20%;
+  margin-left: 40%;
   display: flex;
-  justify-content: center;
 }
 </style>

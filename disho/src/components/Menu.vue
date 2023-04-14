@@ -11,21 +11,23 @@
     </ul>
     <FieldInput typeInput="search" placeholder="Search for product..." />
     <div class="circle-container">
-      <Circle v-on:click="openCart" background="#ffffff" color="#264653" size="8vh">
+      <Circle v-on:click="navigateToCart" background="#ffffff" color="#264653" size="8vh">
         <fa icon="cart-shopping"></fa>
       </Circle>
-      <Circle v-on:click="openAccount" background="#ffffff" color="#264653" size="8vh">
+      <Circle v-on:click="handleAccountConfig" background="#ffffff" color="#264653" size="8vh">
         <fa icon="user"></fa>
       </Circle>
     </div>
-    <div v-show="accountConfig" class="account-config">
+    <ModalLoginVue v-show="showModal" />
+    <div v-show="showAccountConfig === true && showModal === false" class="account-config">
       <h4 class="txt-title">
         <fa icon="user"></fa>
         User
       </h4>
       <li class="txt-subtitle">Change Password</li>
       <li class="txt-subtitle">Change Email</li>
-      <li id="logout" class="txt-subtitle">Logout</li>
+      <li v-on:click="logout" v-if="logged === 'true'" id="logout" class="txt-subtitle">Logout</li>
+      <li v-on:click="modalOpen" v-else id="logout" class="txt-subtitle">Login</li>
     </div>
   </menu>
 </template>
@@ -33,22 +35,52 @@
 <script>
 import FieldInput from "./FieldInput.vue";
 import Circle from "./Circle.vue";
+import ModalLoginVue from "./ModalLogin.vue";
+import { mapActions, mapState } from "vuex";
+import store from "@/store";
+
 export default {
   components: {
     FieldInput,
     Circle,
+    ModalLoginVue,
+  },
+  mounted() {
+    this.logged = localStorage.getItem("logged");
+    this.showAccountConfig = false;
+  },
+  computed: {
+    ...mapState("user", ["showModal"]),
+    ...mapActions("user", ["actOpenModal"]),
   },
   data() {
     return {
-      accountConfig: false,
+      showAccountConfig: false,
+      logged: "",
     };
   },
   methods: {
-    openCart() {
-      this.$router.push(`/ShoppingCart/${localStorage.getItem("token")}`);
+    navigateToCart() {
+      if (localStorage.getItem("token")) {
+        this.$router.push(`/ShoppingCart/${localStorage.getItem("token")}`);
+      } else {
+        store.dispatch("user/actOpenModal", true);
+      }
     },
-    openAccount() {
-      this.accountConfig = !this.accountConfig;
+    handleAccountConfig() {
+      if (this.showModal === true) {
+        this.showAccountConfig = false;
+      } else {
+        this.showAccountConfig = !this.showAccountConfig;
+      }
+    },
+    modalOpen() {
+      store.dispatch("user/actOpenModal", true);
+      this.showAccountConfig = false;
+    },
+    logout() {
+      localStorage.clear();
+      window.location.reload();
     },
   },
 };
