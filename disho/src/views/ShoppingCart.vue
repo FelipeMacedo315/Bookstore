@@ -78,11 +78,12 @@ export default {
       this.getCart();
     },
     async getCart() {
-      const fetchDataCart = await axios.get(`http://localhost:3000/DishoApi/User/get-cart/${localStorage.getItem("token")}`);
-      const result = await fetchDataCart.data;
-      this.itemsCart = result;
-      this.sizeCart = result.cart.length;
-      console.log(this.itemsCart.cart.length);
+      if (localStorage.getItem("token")) {
+        const fetchDataCart = await axios.get(`http://localhost:3000/DishoApi/User/get-cart/${localStorage.getItem("token")}`);
+        const result = await fetchDataCart.data;
+        this.itemsCart = result;
+        this.sizeCart = result.cart.length;
+      }
     },
     proceedBuy() {
       window.confirm("Este é um site Ficticio feito com objetivo de demonstrar conhecimentos nas ferramentas em que foi construido!");
