@@ -4,8 +4,8 @@
       <h1 class="logo">Disho</h1>
       <h2 class="txt-subtitle">Welcome to <span class="logo">Disho</span></h2>
       <p class="txt-subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, esse voluptas modi eaque nostrum dolor laboriosam aliquam excepturi
-        reiciendis praesentium, voluptatem provident culpa voluptate nemo illum, facere delectus ut assumenda!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, esse voluptas modi eaque nostrum dolor laboriosam aliquam
+        excepturi reiciendis praesentium, voluptatem provident culpa voluptate nemo illum, facere delectus ut assumenda!
       </p>
     </div>
     <component class="form" v-if="haveCount">

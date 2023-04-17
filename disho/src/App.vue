@@ -1,18 +1,19 @@
 <template>
   <main>
-    <Menu />
+    <MenuVue />
     <router-view> </router-view>
-    <Footer />
+    <FooterVue />
   </main>
 </template>
 
 <script>
-import Menu from "./components/Menu.vue";
-import Footer from "./components/Footer.vue";
+import FooterVue from "./components/Footer.vue";
+import MenuVue from "./components/Menu.vue";
+
 export default {
   components: {
-    Menu,
-    Footer,
+    MenuVue,
+    FooterVue,
   },
 };
 </script>
@@ -21,9 +22,7 @@ export default {
   margin: 0;
   padding: 0;
 }
-body {
-  overflow-x: hidden;
-}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,6 +30,7 @@ body {
   text-align: center;
   margin: 0vh;
   background-color: var(--grayBackground);
+  overflow-x: hidden;
 }
 
 @font-face {

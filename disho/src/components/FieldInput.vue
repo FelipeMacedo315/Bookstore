@@ -1,13 +1,7 @@
 <template>
-  <div v-if="typeInput === 'search'" class="field-container">
-    <input v-on:change="handleFieldValue" v-bind:type="typeInput" v-bind:placeholder="placeholder" />
+  <div class="field-container">
+    <input v-on:change="handleFieldValue" v-bind:type="inputType" v-bind:placeholder="placeholder" />
     <button v-on:click="productFetch">
-      <fa id="icon-glass" icon="magnifying-glass"></fa>
-    </button>
-  </div>
-  <div v-else-if="typeInput === 'email'" class="field-container">
-    <input v-bind:type="typeInput" v-bind:placeholder="placeholder" />
-    <button v-on:click="promotionFeedback">
       <fa id="icon-glass" icon="magnifying-glass"></fa>
     </button>
   </div>
@@ -18,7 +12,7 @@ import router from "@/router";
 import store from "@/store";
 import { mapState, mapActions } from "vuex";
 export default {
-  props: ["typeInput", "placeholder"],
+  props: ["inputType", "placeholder"],
   computed: {
     ...mapState(["typeProduct"]),
     ...mapState("searchProduct", ["searchProduct"]),
@@ -27,10 +21,16 @@ export default {
   },
   methods: {
     productFetch() {
-      store.dispatch(
-        "fetchFilterProducts",
-        `http://localhost:3000/DishoApi/${this.typeProduct}/filter?&page=1&nameItem=${this.searchProduct}&maxPrice=${50}`
-      );
+      if (this.inputType === "search") {
+        store.dispatch(
+          "fetchFilterProducts",
+          `http://localhost:3000/DishoApi/${this.typeProduct}/filter?&page=1&nameItem=${this.searchProduct}&maxPrice=${50}`
+        );
+      }
+      if (this.inputType === "email") {
+        window.alert("Ainda não temos promoções");
+      }
+
       router.push("/shop");
     },
     handleFieldValue(valueField) {

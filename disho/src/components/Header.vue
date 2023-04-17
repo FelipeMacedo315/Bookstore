@@ -3,15 +3,10 @@
     <div class="header-txt">
       <h1>Check out our Best Weekly Prices</h1>
       <p>Pellentesque et justo lorem. Proin hendrerit, velit vitae vehicula vulputate</p>
-      <div class="container-btns">
-        <Button btnClass="btn-green" content="View Sale" />
-        <Button btnClass="btn-white" content="Shop all" />
-      </div>
     </div>
     <div class="placeholder-img">
       <img src="../assets/foto_hortifruti_v07.jpg" alt="" />
     </div>
-
     <div class="slides">
       <CardSlide imgCard="comida-salada-alface-legumes-imagem-de-fundo.jpg" />
       <CardSlide imgCard="thinkstockphotos-613144376.webp" />
@@ -39,6 +34,7 @@ header {
   height: 80vh;
   display: grid;
   grid-template-columns: auto auto;
+  justify-content: center;
 }
 .header-txt {
   width: 70%;
@@ -46,18 +42,18 @@ header {
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding-top: 20%;
   gap: 0.8rem;
   h1 {
     color: var(--colorDisho);
-    font-size: 3rem;
+    font-size: 4em;
     line-height: 3.5rem;
     font-family: viga;
   }
   p {
     font-family: Pt-Sans-Regular;
     color: var(--colorText);
-    font-size: 1.5rem;
+    font-size: 2em;
   }
 }
 .placeholder-img {
@@ -73,16 +69,42 @@ header {
     border-radius: 50%;
   }
 }
-.container-btns {
-  width: 75%;
-  display: flex;
-  justify-content: space-between;
-}
+
 .slides {
-  padding: 0.5rem 0px;
   width: 100%;
   margin-top: -20%;
   margin-left: 40%;
   display: flex;
+  justify-content: space-evenly;
+}
+@media (max-width: 768px) {
+  header {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    grid-template-columns: auto;
+    justify-items: center;
+  }
+  .placeholder-img {
+    margin: 0;
+    width: 60vh;
+    height: 60vh;
+  }
+  .header-txt {
+    width: 100%;
+    text-align: center;
+    padding: 10% 5% 0% 5%;
+    width: 100vw;
+    h1 {
+      font-size: 3em;
+    }
+    p {
+      font-size: 1.5em;
+    }
+  }
+  .slides {
+    flex-direction: row;
+    margin: 0;
+  }
 }
 </style>

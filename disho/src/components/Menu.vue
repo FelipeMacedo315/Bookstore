@@ -9,7 +9,7 @@
       <router-link to="/blog"> Blog </router-link>
       <router-link to="/contact">Contact</router-link>
     </ul>
-    <FieldInput typeInput="search" placeholder="Search for product..." />
+    <FieldInput inputType="search" placeholder="Search for product..." />
     <div class="circle-container">
       <Circle v-on:click="navigateToCart" background="#ffffff" color="#264653" size="8vh">
         <fa icon="cart-shopping"></fa>
@@ -97,7 +97,7 @@ menu {
   padding: 0% 2rem;
   a {
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1em;
     color: var(--colorDisho);
     font-weight: 400;
     font-family: "PT-Sans-Regular";

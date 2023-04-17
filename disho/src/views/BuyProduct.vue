@@ -49,9 +49,7 @@ export default {
     },
 
     async singleProduct() {
-      const x = await fetch(
-        `http://localhost:3000/DishoApi/${this.typeProduct}/${this.$route.params.id}`
-      );
+      const x = await fetch(`http://localhost:3000/DishoApi/${this.typeProduct}/${this.$route.params.id}`);
       const checkItem = await x.json();
       this.item = await checkItem;
       this.itemName = await checkItem.name;

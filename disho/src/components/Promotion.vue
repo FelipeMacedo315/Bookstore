@@ -3,8 +3,8 @@
     <div class="txt-container">
       <h2 class="txt-title">Save 20% on first shopping</h2>
       <p>Sign Up to Newsletter</p>
+      <FieldInput typeInput="email" placeholder="Sign your email" />
     </div>
-    <FieldInput typeInput="email" placeholder="Email" />
   </section>
 </template>
 
@@ -19,12 +19,12 @@ export default {
 
 <style lang="scss">
 .promotion-container {
-  height: 10vh;
   padding: 10vh 0;
   display: flex;
   justify-content: space-around;
   align-items: baseline;
   background-color: rgba(255, 255, 255, 0.670542);
+  border: solid orange;
   p {
     font-size: 1.5rem;
     font-family: viga;

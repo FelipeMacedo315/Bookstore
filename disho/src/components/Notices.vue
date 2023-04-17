@@ -52,4 +52,9 @@ export default {
   padding: 2rem 2rem 5vh 2rem;
   margin-top: 10vh;
 }
+@media (max-width: 768px) {
+  .blog {
+    margin-top: 0;
+  }
+}
 </style>

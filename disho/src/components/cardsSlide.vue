@@ -26,4 +26,9 @@ export default {
     object-fit: cover;
   }
 }
+@media (max-width: 768px) {
+  .card-slides {
+    width: 25vh;
+  }
+}
 </style>

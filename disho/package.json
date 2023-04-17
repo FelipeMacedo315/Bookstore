@@ -30,6 +30,6 @@
     "not ie 11"
   ],
   "prettier": {
-    "printWidth": 140
+    "printWidth": 130
   }
 }

@@ -1,7 +1,6 @@
 <template>
   <button v-bind:disabled="btnDisable" v-bind:class="btnClass">{{ content }}</button>
 </template>
-
 <script>
 export default {
   props: ["content", "btnClass", "btnDisable"],

@@ -15,16 +15,16 @@
       <Circle background="#ffffff" color="#7eb23d" size="25vh" sizeText="4em">
         <fa icon="location-dot"></fa>
       </Circle>
-      <p class="txt-adress">350 Bay Meadows St. Reynoldsburg, OH 43068</p>
+      <p class="txt-title">350 Bay Meadows St. Reynoldsburg, OH 43068</p>
     </div>
     <div class="timetable">
       <Circle background="#ffffff" color="#7eb23d" size="25vh" sizeText="4em">
         <fa icon="headset"></fa>
       </Circle>
-      <div class="timetable-txt">
-        <p class="txt-subtitle">Mon - Fri: 9:00 am - 9:00 pm</p>
-        <p class="txt-adress">+1-202-555-0168</p>
-      </div>
+      <p class="txt-subtitle">
+        Mon - Fri: 9:00 am - 9:00 pm <br />
+        <span class="txt-title">+1-202-555-0168</span>
+      </p>
     </div>
   </footer>
 </template>
@@ -45,7 +45,7 @@ footer {
   grid-template-columns: 25% 35% 35%;
   column-gap: 2%;
   padding: 2% 1%;
-  max-height: 40vh;
+  border: dashed;
 }
 .infos {
   height: 100%;
@@ -66,24 +66,31 @@ footer {
 .social-media-icon {
   height: 3vh;
 }
-.txt-adress {
-  font-family: viga;
-  font-size: 2rem;
-  color: var(--colorDisho);
-  width: 60%;
-  font-size: 1.6em;
-}
 
 .contact,
 .timetable {
   height: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  .txt-title {
+    font-size: 1.5em;
+  }
 }
-.timetable-txt {
-  white-space: nowrap;
-  display: flex;
-  flex-direction: column;
+
+@media (max-width: 768px) {
+  footer {
+    grid-template-columns: 100%;
+    row-gap: 5vh;
+  }
+  .contact,
+  .timetable {
+    grid-template-columns: auto;
+    justify-items: center;
+    .txt-title {
+      font-size: 1.2em;
+    }
+  }
 }
 </style>

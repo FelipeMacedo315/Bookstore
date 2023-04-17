@@ -60,4 +60,9 @@ export default {
   width: 100%;
   object-fit: cover;
 }
+@media (max-width: 768px) {
+  .card-blog {
+    width: 100%;
+  }
+}
 </style>

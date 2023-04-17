@@ -25,29 +25,41 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2% 0%;
+  padding: 1% 0%;
+  height: 10vh;
 }
 .container-img {
-  border-right: 2px solid var(--grayLight);
   padding-right: 5%;
   padding-left: 5%;
   span {
-    font-size: 7vh;
+    font-size: 5vh;
     color: var(--colorText);
   }
 }
 .text-vantagens {
   width: 70%;
   text-align: left;
+  border-left: 2px solid var(--grayLight);
+  padding-left: 5%;
   h2 {
     color: var(--colorDisho);
     font-family: viga;
-    font-size: 1.5rem;
+    font-size: 1.3em;
   }
   p {
     color: var(--colorText);
     font-family: PT-Sans-Regular;
-    font-size: 1rem;
+    font-size: 1em;
+  }
+}
+@media (max-width: 768px) {
+  .text-vantagens {
+    text-align: center;
+  }
+  .card-vantagens {
+    width: 90%;
+    margin: 5% 5% 0% 5%;
+    height: 12vh;
   }
 }
 </style>

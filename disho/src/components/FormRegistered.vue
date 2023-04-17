@@ -13,7 +13,9 @@
         <small v-if="field === 'Email' && this.$store.state.user.user.email === 'invalid'"> {{ field }} invalido </small>
         <small v-else></small>
         <!-- check field PASSWORD -->
-        <small v-if="field === 'Password' && this.$store.state.user.user.password === 'invalid'"> {{ field }} Minimum 3 caracter</small>
+        <small v-if="field === 'Password' && this.$store.state.user.user.password === 'invalid'">
+          {{ field }} Minimum 3 caracter</small
+        >
         <small v-else></small>
       </label>
     </form>

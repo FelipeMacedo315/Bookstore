@@ -43,4 +43,10 @@ export default {
   justify-content: space-around;
   width: 100%;
 }
+@media (max-width: 768px) {
+  .container-slides {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
 </style>
