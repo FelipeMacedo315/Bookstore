@@ -9,7 +9,7 @@
       <router-link to="/blog"> Blog </router-link>
       <router-link to="/contact">Contact</router-link>
     </ul>
-    <FieldInput inputType="search" placeholder="Search for product..." />
+    <Entrance inputType="search" placeholder="Search for product..." />
     <div class="circle-container">
       <Circle v-on:click="navigateToCart" background="#ffffff" color="#264653" size="8vh">
         <fa icon="cart-shopping"></fa>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import FieldInput from "./FieldInput.vue";
+import Entrance from "./Entrance.vue";
 import Circle from "./Circle.vue";
 import ModalLoginVue from "./ModalLogin.vue";
 import { mapActions, mapState } from "vuex";
@@ -41,7 +41,7 @@ import store from "@/store";
 
 export default {
   components: {
-    FieldInput,
+    Entrance,
     Circle,
     ModalLoginVue,
   },
