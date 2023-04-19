@@ -22,6 +22,7 @@ import {
   faHeadset,
   faTrash,
   faBars,
+  faFilter,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -44,7 +45,8 @@ library.add(
   faHeadset,
   faTrash,
   faArrowRight,
-  faBars
+  faBars,
+  faFilter
 );
 
 createApp(App).component("fa", FontAwesomeIcon).use(store).use(router).mount("#app");

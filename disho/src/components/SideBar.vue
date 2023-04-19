@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar">
+    <fa id="close-icon-sidebar" v-on:click="$emit('closeSideBar', false)" v-show="sidebarResponsive" icon="close"></fa>
     <h1>Shop Products</h1>
     <div class="divider-title"></div>
 
@@ -34,29 +35,15 @@
         <h2>Produtcs Tags:</h2>
         <div class="divider-categories"></div>
         <div class="tags">
-          <span
-            v-bind:class="tagKey === 'banana' ? 'tag-active' : 'tag-inactive'"
-            v-on:click="captureTags($event)"
-            >banana</span
-          >
-          <span
-            v-bind:class="tagKey === 'abacaxi' ? 'tag-active' : 'tag-inactive'"
-            v-on:click="captureTags($event)"
+          <span v-bind:class="tagKey === 'banana' ? 'tag-active' : 'tag-inactive'" v-on:click="captureTags($event)">banana</span>
+          <span v-bind:class="tagKey === 'abacaxi' ? 'tag-active' : 'tag-inactive'" v-on:click="captureTags($event)"
             >abacaxi</span
           >
-          <span
-            v-bind:class="tagKey === 'melancia' ? 'tag-active' : 'tag-inactive'"
-            v-on:click="captureTags($event)"
+          <span v-bind:class="tagKey === 'melancia' ? 'tag-active' : 'tag-inactive'" v-on:click="captureTags($event)"
             >melancia</span
           >
-          <span
-            v-bind:class="tagKey === 'uva' ? 'tag-active' : 'tag-inactive'"
-            v-on:click="captureTags($event)"
-            >uva</span
-          >
-          <span
-            v-bind:class="tagKey === 'laranja' ? 'tag-active' : 'tag-inactive'"
-            v-on:click="captureTags($event)"
+          <span v-bind:class="tagKey === 'uva' ? 'tag-active' : 'tag-inactive'" v-on:click="captureTags($event)">uva</span>
+          <span v-bind:class="tagKey === 'laranja' ? 'tag-active' : 'tag-inactive'" v-on:click="captureTags($event)"
             >laranja</span
           >
         </div>
@@ -86,6 +73,11 @@ export default {
     ...mapActions["navigate"],
     ...mapState["currentPage"],
   },
+  mounted() {
+    if (window.screen.width < 768) {
+      this.sidebarResponsive = true;
+    }
+  },
   data() {
     return {
       rangeMaxPrice: 60,
@@ -93,6 +85,7 @@ export default {
       tagKey: "",
       tagClass: "tag-inactive",
       btnStatus: false,
+      sidebarResponsive: false,
     };
   },
   methods: {
@@ -248,5 +241,16 @@ input[type="range"] {
   width: 100%;
   padding-top: 10%;
   padding-bottom: 20%;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    background-color: white;
+  }
+  #close-icon-sidebar {
+    margin-left: 90%;
+    margin-top: 5%;
+    height: 5vh;
+  }
 }
 </style>

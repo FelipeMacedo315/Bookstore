@@ -16,17 +16,15 @@ export default {};
   background-color: var(--colorBtn);
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   height: 100%;
   width: 100%;
   position: fixed;
   top: 0vh;
   left: 0;
-  padding-top: 5%;
   a {
     font-size: 4em;
     color: var(--colorWhite);
-    padding-top: 10%;
-    width: 100%;
   }
   .page-active {
     border-bottom: solid var(--colorWhite);
@@ -35,6 +33,7 @@ export default {};
     height: 10%;
     width: 10%;
     margin-left: 80%;
+    margin-bottom: 10%;
     color: var(--colorDisho);
     cursor: pointer;
     :hover {

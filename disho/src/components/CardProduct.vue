@@ -32,7 +32,7 @@ export default {
 <style lang="scss">
 .card-product {
   height: 50vh;
-  width: 15vw;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,5 +59,15 @@ export default {
   font-size: 0.8rem;
   color: #fc4b4e;
   font-weight: 700;
+}
+@media (max-width: 768px) {
+  .card-product {
+    width: 100%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card-product {
+    width: 40%;
+  }
 }
 </style>

@@ -1,32 +1,44 @@
 <template>
-  <main class="all-page">
+  <main>
     <BreadCrumps>
       <a>Home </a>
       <a>|</a>
       <a>Shop</a>
     </BreadCrumps>
     <div class="container-sidebar-and-items-page">
-      <SideBar v-on:restartProducts="cancelFilter" v-on:filterCondicions="filterItems" />
+      <SideBar
+        v-on:closeSideBar="receiverCloseSideBar"
+        v-show="handleSidebar"
+        v-on:restartProducts="cancelFilter"
+        v-on:filterCondicions="filterItems"
+      />
       <div class="no-results" v-if="!products.length">
         <h1>
           Nenhum Produto encontrado. <br />
           Tente mudar os filtros
         </h1>
       </div>
-      <div class="principal" v-else>
+      <div class="content" v-else>
         <div class="container-sorting">
           <select v-on:change="orderedBy">
             <option value="default">Default</option>
             <option value="high">High Price</option>
             <option value="low">Low Price</option>
           </select>
+          <Circle v-on:click="handleSidebar = true" v-if="!handleSidebar" background="#ffffff" color="#264653" size="7vh">
+            <fa icon="filter"></fa>
+          </Circle>
 
           <p class="results">Showing 1-10 of {{ totalItems }} items</p>
         </div>
         <div class="container-products">
-          <component v-for="(items, index) in products">
-            <CardProduct v-bind:name="items.name" v-bind:price="items.price" v-bind:img="items.image[0]" v-bind:id="items._id" />
-          </component>
+          <CardProduct
+            v-for="(items, index) in products"
+            v-bind:name="items.name"
+            v-bind:price="items.price"
+            v-bind:img="items.image[0]"
+            v-bind:id="items._id"
+          />
         </div>
         <div class="pagination">
           <button
@@ -51,7 +63,11 @@ import CardProduct from "../components/CardProduct.vue";
 import BreadCrumps from "../components/BreadCrumps.vue";
 import { mapActions, mapState } from "vuex";
 import store from "@/store";
+import Circle from "../components/Circle.vue";
 export default {
+  components: {
+    Circle,
+  },
   computed: {
     ...mapState(["products", "typeProduct", "currentPage", "totalPages", "totalItems"]),
     ...mapState("searchProduct", ["searchProduct"]),
@@ -68,6 +84,9 @@ export default {
   },
   mounted() {
     window.scrollTo(0, 0);
+    if (window.screen.width < 760) {
+      this.handleSidebar = false;
+    }
     if (!this.searchProduct.length) {
       this.fetchProducts;
     }
@@ -78,7 +97,7 @@ export default {
     return {
       optionSort: "",
       btnStatus: false,
-
+      handleSidebar: true,
       // urlServerRailway: "https://api-disho.up.railway.app/DishoApi/",
       urlLocalHost: `http://localhost:3000/DishoApi/`,
     };
@@ -107,18 +126,6 @@ export default {
         "fetchFilterProducts",
         `http://localhost:3000/DishoApi/${this.typeProduct}/filter?&page=${this.currentPage}&nameItem=${valueOfChildreen.currentTag}&maxPrice=${valueOfChildreen.currentValue}`
       );
-      // this.fetchProducts(
-      //   this.urlLocalHost +
-      //     this.typeProduct +
-      //     "/filter?page=" +
-      //     this.currentPage +
-      //     "&" +
-      //     "nameItem=" +
-      //     valueOfChildreen.currentTag +
-      //     "&" +
-      //     "maxPrice=" +
-      //     valueOfChildreen.currentValue
-      // );
     },
     cancelFilter(valueofSideBar) {
       if (valueofSideBar) {
@@ -127,27 +134,27 @@ export default {
         null;
       }
     },
+    receiverCloseSideBar(valueChild) {
+      this.handleSidebar = valueChild;
+    },
   },
   components: {
     SideBar,
     CardProduct,
     BreadCrumps,
+    Circle,
   },
 };
 </script>
 
 <style lang="scss">
-.all-page {
-  display: flex;
-  flex-direction: column;
-}
 .container-sidebar-and-items-page {
   display: flex;
   column-gap: 5%;
   align-items: flex-start;
   margin: 5% 2%;
 }
-.principal {
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,15 +166,16 @@ export default {
   display: flex;
   width: 100%;
   justify-content: space-between;
-
+  align-items: center;
   select {
     font-family: PT-Sans-Regular;
     font-size: 1rem;
     color: var(--colorDisho);
     font-weight: 700;
-    padding: 1rem 2rem;
-    border-radius: 20px;
+    border-radius: 25px;
     border: solid 1px var(--grayLight);
+    height: 7vh;
+    padding-left: 15px;
   }
 
   p {
@@ -224,6 +232,20 @@ export default {
     color: var(--colorDisho);
     font-size: 3rem;
     font-family: viga;
+  }
+}
+@media (max-width: 768px) {
+  .container-sidebar-and-items-page {
+    flex-direction: column;
+  }
+  .container-sorting {
+    justify-content: space-around;
+  }
+  .content {
+    width: 100%;
+  }
+  .container-products {
+    flex-direction: column;
   }
 }
 </style>
