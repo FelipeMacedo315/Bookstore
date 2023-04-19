@@ -33,7 +33,6 @@ export default {
   padding: 0.9rem;
   font-size: 1rem;
   font-weight: 400;
-  width: 100%;
   border-radius: 3rem;
   border: 1px groove var(--colorDisho);
   transition: 400ms;
@@ -41,6 +40,11 @@ export default {
   &:hover {
     background-color: var(--colorText);
     color: var(--colorWhite);
+  }
+}
+@media (max-width: 768px) {
+  .btn-white {
+    width: 100%;
   }
 }
 </style>
