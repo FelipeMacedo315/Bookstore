@@ -24,7 +24,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: 10vh 0%;
+  padding: 5vh 0%;
 }
 .txt-title {
   color: var(--colorDisho);
@@ -44,6 +44,9 @@ export default {
   width: 100%;
 }
 @media (max-width: 768px) {
+  .title-container {
+    padding: 10vh 0;
+  }
   .container-slides {
     flex-direction: column;
     justify-content: space-around;

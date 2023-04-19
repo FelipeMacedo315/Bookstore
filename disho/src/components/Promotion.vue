@@ -19,7 +19,6 @@ export default {
 
 <style lang="scss">
 .promotion-container {
-  height: 10vh;
   padding: 10vh 0;
   display: flex;
   justify-content: space-around;
@@ -35,5 +34,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+@media (max-width: 768px) {
+  .promotion-container {
+    padding: 5vh 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+  }
+  .txt-container {
+    align-items: center;
+    gap: 5vh;
+  }
 }
 </style>

@@ -1,3 +1,5 @@
+<!-- Esse componente é apenas um clone do componente FIELDINPUT.FOI CRIADO APENAS DEVIDO A UM ERRO DO VUE-CLI -->
+
 <template>
   <div class="field-container">
     <input v-on:change="handleFieldValue" v-bind:type="inputType" v-bind:placeholder="placeholder" />
@@ -39,46 +41,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.field-container {
-  height: 50%;
-  width: 30vw;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  button {
-    height: 100%;
-    width: 20%;
-    background-color: var(--colorBtn);
-    border: none;
-    border-top-right-radius: 26px;
-    border-bottom-right-radius: 26px;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.5;
-    }
-    img {
-      filter: invert(100%);
-    }
-  }
-  input {
-    font-size: 1rem;
-    box-sizing: content-box;
-    border-radius: 26px 0px 0px 26px;
-    width: 75%;
-    box-sizing: border-box;
-    border: 1px solid var(--grayLight);
-    font-family: Pt-Sans-Regular;
-    padding-left: 5%;
-
-    &::placeholder {
-      padding-left: 5%;
-      color: var(--colorPlaceholder);
-    }
-  }
-  #icon-glass {
-    color: white;
-    font-size: 1.5rem;
-  }
-}
-</style>
+<style lang="scss"></style>

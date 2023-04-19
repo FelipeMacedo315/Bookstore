@@ -28,7 +28,6 @@
     </div>
   </footer>
 </template>
-
 <script>
 import Circle from "./Circle.vue";
 export default {
@@ -45,7 +44,6 @@ footer {
   grid-template-columns: 25% 35% 35%;
   column-gap: 2%;
   padding: 2% 1%;
-  border: dashed;
 }
 .infos {
   height: 100%;
@@ -83,6 +81,12 @@ footer {
   footer {
     grid-template-columns: 100%;
     row-gap: 5vh;
+  }
+  .infos {
+    align-items: center;
+    p {
+      text-align: center;
+    }
   }
   .contact,
   .timetable {

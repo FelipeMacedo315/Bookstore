@@ -21,7 +21,7 @@ import {
   faLocationDot,
   faHeadset,
   faTrash,
-  faArrowRightLong,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -43,7 +43,8 @@ library.add(
   faLocationDot,
   faHeadset,
   faTrash,
-  faArrowRight
+  faArrowRight,
+  faBars
 );
 
 createApp(App).component("fa", FontAwesomeIcon).use(store).use(router).mount("#app");

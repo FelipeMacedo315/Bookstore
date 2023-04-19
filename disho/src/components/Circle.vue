@@ -23,7 +23,7 @@ export default {
   justify-content: center;
   transition: 50ms;
   font-size: v-bind(sizeText);
-
+  margin-left: 5%;
   cursor: pointer;
   &:active {
     background-color: var(--colorText);

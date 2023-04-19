@@ -1,22 +1,26 @@
 <template>
   <menu>
-    <div class="container-logo">
+    <div v-show="menuResponsive" class="container-logo">
       <h1 class="logo">Disho</h1>
     </div>
-    <ul class="sections-menu">
+    <ul v-show="menuResponsive" class="sections-menu">
       <router-link to="/"> Home </router-link>
       <router-link to="/shop"> Shop </router-link>
       <router-link to="/blog"> Blog </router-link>
       <router-link to="/contact">Contact</router-link>
     </ul>
-    <Entrance inputType="search" placeholder="Search for product..." />
+    <cloneFieldInputVue inputType="search" placeholder="Search for product..." />
     <div class="circle-container">
-      <Circle v-on:click="navigateToCart" background="#ffffff" color="#264653" size="8vh">
+      <Circle v-on:click="navigateToCart" background="#ffffff" color="#264653" size="9vh">
         <fa icon="cart-shopping"></fa>
       </Circle>
-      <Circle v-on:click="handleAccountConfig" background="#ffffff" color="#264653" size="8vh">
+      <Circle v-if="menuResponsive" v-on:click="handleAccountConfig" background="#ffffff" color="#264653" size="9vh">
         <fa icon="user"></fa>
       </Circle>
+      <Circle v-else v-on:click="handleBarResponsive = true" background="#ffffff" color="#264653" size="9vh">
+        <fa icon="bars"></fa>
+      </Circle>
+      <BarResponsive v-on:closeBar="teste" v-show="handleBarResponsive" />
     </div>
     <ModalLoginVue v-show="showModal" />
     <div v-show="showAccountConfig === true && showModal === false" class="account-config">
@@ -27,28 +31,32 @@
       <li class="txt-subtitle">Change Password</li>
       <li class="txt-subtitle">Change Email</li>
       <li v-on:click="logout" v-if="logged === 'true'" id="logout" class="txt-subtitle">Logout</li>
-      <li v-on:click="modalOpen" v-else id="logout" class="txt-subtitle">Login</li>
+      <li v-on:click="openLogin" v-else id="logout" class="txt-subtitle">Login</li>
     </div>
   </menu>
 </template>
 
 <script>
-import Entrance from "./Entrance.vue";
 import Circle from "./Circle.vue";
 import ModalLoginVue from "./ModalLogin.vue";
 import { mapActions, mapState } from "vuex";
 import store from "@/store";
+import cloneFieldInputVue from "./cloneFieldInput.vue";
+import BarResponsive from "./BarResponsive.vue";
 
 export default {
   components: {
-    Entrance,
+    cloneFieldInputVue,
     Circle,
     ModalLoginVue,
+    BarResponsive,
   },
   mounted() {
     this.logged = localStorage.getItem("logged");
     this.showAccountConfig = false;
+    this.responsiveMenu();
   },
+
   computed: {
     ...mapState("user", ["showModal"]),
     ...mapActions("user", ["actOpenModal"]),
@@ -57,6 +65,8 @@ export default {
     return {
       showAccountConfig: false,
       logged: "",
+      menuResponsive: false,
+      handleBarResponsive: false,
     };
   },
   methods: {
@@ -74,13 +84,21 @@ export default {
         this.showAccountConfig = !this.showAccountConfig;
       }
     },
-    modalOpen() {
+    openLogin() {
       store.dispatch("user/actOpenModal", true);
       this.showAccountConfig = false;
     },
     logout() {
       localStorage.clear();
       window.location.reload();
+    },
+    responsiveMenu() {
+      if (window.screen.width > 768) {
+        this.menuResponsive = true;
+      }
+    },
+    teste(valueChild) {
+      this.handleBarResponsive = valueChild;
     },
   },
 };
@@ -93,7 +111,6 @@ menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: row;
   padding: 0% 2rem;
   a {
     text-decoration: none;
@@ -126,10 +143,9 @@ menu {
   }
 }
 .circle-container {
-  width: 10%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .account-config {
@@ -177,6 +193,16 @@ menu {
   to {
     top: 20%;
     left: 80%;
+  }
+}
+@media (max-width: 768px) {
+  menu {
+    padding: 0;
+    justify-content: space-evenly;
+  }
+  .circle-container {
+    width: 30%;
+    justify-content: space-evenly;
   }
 }
 </style>

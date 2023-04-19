@@ -34,7 +34,6 @@ header {
   height: 80vh;
   display: grid;
   grid-template-columns: auto auto;
-  justify-content: center;
 }
 .header-txt {
   width: 70%;
@@ -72,10 +71,11 @@ header {
 
 .slides {
   width: 100%;
-  margin-top: -20%;
-  margin-left: 40%;
+  margin-top: -30vh;
+  margin-left: 25%;
   display: flex;
-  justify-content: space-evenly;
+  box-sizing: border-box;
+  column-gap: 2vh;
 }
 @media (max-width: 768px) {
   header {
@@ -83,6 +83,7 @@ header {
     padding: 0;
     height: auto;
     grid-template-columns: auto;
+    justify-content: center;
     justify-items: center;
   }
   .placeholder-img {
@@ -104,6 +105,7 @@ header {
   }
   .slides {
     flex-direction: row;
+    justify-content: center;
     margin: 0;
   }
 }

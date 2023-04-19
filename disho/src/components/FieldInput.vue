@@ -41,10 +41,11 @@ export default {
 
 <style lang="scss">
 .field-container {
-  height: 50%;
+  height: 7vh;
   width: 30vw;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: row;
   button {
     height: 100%;
@@ -62,6 +63,7 @@ export default {
     }
   }
   input {
+    height: 100%;
     font-size: 1rem;
     box-sizing: content-box;
     border-radius: 26px 0px 0px 26px;
@@ -79,6 +81,11 @@ export default {
   #icon-glass {
     color: white;
     font-size: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .field-container {
+    width: 100%;
   }
 }
 </style>
