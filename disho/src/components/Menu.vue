@@ -35,7 +35,6 @@
     </div>
   </menu>
 </template>
-
 <script>
 import Circle from "./Circle.vue";
 import ModalLoginVue from "./ModalLogin.vue";

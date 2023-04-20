@@ -69,6 +69,9 @@ export default {
 .product-gallery {
   display: flex;
   justify-content: center;
+  img {
+    cursor: pointer;
+  }
 }
 .images-product {
   display: flex;
@@ -89,6 +92,10 @@ export default {
 .common-images {
   height: 20vh;
   width: 30%;
+  border: solid 1px transparent;
+  &:hover {
+    border: solid 1px var(--colorDisho);
+  }
 }
 img {
   object-fit: fill;
@@ -100,20 +107,18 @@ img {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1vh;
+  gap: 2vh;
   h2 {
-    padding-bottom: 5%;
+    padding-top: 5%;
   }
   .price {
     font-size: 1.5rem;
-    padding-bottom: 6%;
   }
   .description {
     text-align: left;
     color: var(--colorText);
     font-family: Pt-Sans-Regular;
     font-size: 1.5rem;
-    padding: 5% 0%;
   }
   span {
     color: var(--colorText);
@@ -147,5 +152,32 @@ img {
   font-weight: 700;
   font-size: 1.2rem;
   color: var(--colorText);
+}
+@media (max-width: 768px) {
+  .product-gallery {
+    flex-direction: column;
+    .info {
+      width: 100%;
+      align-items: center;
+      margin: 0;
+      button {
+        margin-left: 0%;
+      }
+    }
+  }
+  .quanty-container {
+    justify-content: center;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .product-gallery {
+    .info {
+      width: 50%;
+      align-items: center;
+    }
+    .quanty-container {
+      justify-content: center;
+    }
+  }
 }
 </style>

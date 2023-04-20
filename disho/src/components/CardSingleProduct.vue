@@ -1,39 +1,37 @@
 <template>
-  <div>
-    <div v-if="product" class="product-gallery">
-      <div class="images-product">
-        <img v-on:click="galeryVisible = true" class="main-image" v-bind:src="product.image[0]" alt="" />
-        <component class="common-container-images">
-          <img
-            v-on:click="galeryVisible = true"
-            v-for="(commonImages, index) in product.image.slice(1)"
-            class="common-images"
-            v-bind:src="commonImages"
-            v-bind:alt="commonImages"
-          />
-        </component>
-      </div>
-      <div class="info">
-        <h2 class="logo">{{ product.name }}</h2>
-        <p class="price">${{ product.price }}</p>
-        <span>*Price for a Kg</span>
-        <div class="quanty-container">
-          <div class="input-simulator">{{ quanty }}</div>
-          <button v-on:click="count('+')"><fa icon="plus"></fa></button>
-          <button v-on:click="count('-')"><fa icon="minus"></fa></button>
-          <button><fa icon="heart"></fa></button>
-        </div>
-        <button v-on:click="addItem" class="btn-green"><fa icon="cart-shopping"></fa> Add to Cart</button>
-
-        <p class="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nobis facere. Pariatur iure molestias distinctio obcaecati libero
-          maxime magni explicabo? Excepturi voluptatibus, adipisci aut laudantium pariatur officia similique? Ullam, perferendis!
-        </p>
-      </div>
-      <component v-if="product" v-show="galeryVisible">
-        <Gallery v-on:closeGallery="closingGallery" v-bind:imagesProduct="product.image" />
+  <div v-if="product" class="product-gallery">
+    <div class="images-product">
+      <img v-on:click="galeryVisible = true" class="main-image" v-bind:src="product.image[0]" alt="" />
+      <component class="common-container-images">
+        <img
+          v-on:click="galeryVisible = true"
+          v-for="(commonImages, index) in product.image.slice(1)"
+          class="common-images"
+          v-bind:src="commonImages"
+          v-bind:alt="commonImages"
+        />
       </component>
     </div>
+    <div class="info">
+      <h2 class="logo">{{ product.name }}</h2>
+      <p class="price">${{ product.price }}</p>
+      <span>*Price for a Kg</span>
+      <div class="quanty-container">
+        <div class="input-simulator">{{ quanty }}</div>
+        <Circle background="#ffffff" color="#264653" size="7vh" v-on:click="count('+')"><fa icon="plus"></fa></Circle>
+        <Circle background="#ffffff" color="#264653" size="7vh" v-on:click="count('-')"><fa icon="minus"></fa></Circle>
+      </div>
+      <button v-on:click="addItem" class="btn-green"><fa icon="cart-shopping"></fa> Add to Cart</button>
+
+      <p class="description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nobis facere. Pariatur iure molestias distinctio obcaecati
+        libero maxime magni explicabo? Excepturi voluptatibus, adipisci aut laudantium pariatur officia similique? Ullam,
+        perferendis!
+      </p>
+    </div>
+    <component v-if="product" v-show="galeryVisible">
+      <Gallery v-on:closeGallery="closingGallery" v-bind:imagesProduct="product.image" />
+    </component>
   </div>
 </template>
 
@@ -43,11 +41,13 @@ import Gallery from "./Gallery.vue";
 import ModalLoginVue from "./ModalLogin.vue";
 import axios from "axios";
 import store from "@/store";
+import Circle from "./Circle.vue";
 export default {
   props: ["product"],
   components: {
     Gallery,
     ModalLoginVue,
+    Circle,
   },
   computed: {
     ...mapState("user", ["showModal"]),
@@ -101,17 +101,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.product-gallery {
-  img {
-    cursor: pointer;
-  }
-}
-
-.common-images {
-  border: solid 1px transparent;
-  &:hover {
-    border: solid 1px var(--colorDisho);
-  }
-}
-</style>
+<style lang="scss"></style>
