@@ -69,6 +69,7 @@ export default {
   .main-image {
     object-fit: fill;
     cursor: auto;
+    height: 60vh;
   }
 
   .btn-plus {
@@ -92,7 +93,7 @@ export default {
     background-color: var(--colorText);
     font-size: 5vh;
     color: var(--colorWhite);
-    width: 3vw;
+    width: 5%;
     border: none;
     cursor: pointer;
     &:hover {
@@ -122,5 +123,27 @@ export default {
 }
 #arrow-tranform {
   transform: rotate(180deg);
+}
+@media (max-width: 768px) {
+  .gallery {
+    .common-container-images-gallery {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .common-images-gallery {
+      height: 15vh;
+      width: 30%;
+    }
+    .btn-minus {
+      width: 10%;
+    }
+    .btn-minus,
+    .btn-plus,
+    .btn-close {
+      width: 10%;
+    }
+  }
 }
 </style>

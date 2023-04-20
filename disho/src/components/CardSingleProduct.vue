@@ -1,10 +1,10 @@
 <template>
   <div v-if="product" class="product-gallery">
     <div class="images-product">
-      <img v-on:click="galeryVisible = true" class="main-image" v-bind:src="product.image[0]" alt="" />
+      <img v-on:click="openGallery" class="main-image" v-bind:src="product.image[0]" alt="" />
       <component class="common-container-images">
         <img
-          v-on:click="galeryVisible = true"
+          v-on:click="openGallery"
           v-for="(commonImages, index) in product.image.slice(1)"
           class="common-images"
           v-bind:src="commonImages"
@@ -29,9 +29,7 @@
         perferendis!
       </p>
     </div>
-    <component v-if="product" v-show="galeryVisible">
-      <Gallery v-on:closeGallery="closingGallery" v-bind:imagesProduct="product.image" />
-    </component>
+    <Gallery v-if="product" v-show="galleryVisible" v-on:closeGallery="closingGallery" v-bind:imagesProduct="product.image" />
   </div>
 </template>
 
@@ -50,17 +48,15 @@ export default {
     Circle,
   },
   computed: {
-    ...mapState("user", ["showModal"]),
-    ...mapActions("user", ["actOpenModal"]),
+    ...mapState("user", ["showModal", "galleryVisible"]),
+    ...mapActions("user", ["actOpenModal", "actGalleryVisible"]),
     quanty() {
       return this.$store.state.carrinho.quanty;
     },
   },
 
   data() {
-    return {
-      galeryVisible: false,
-    };
+    return {};
   },
   methods: {
     addItem() {
@@ -95,7 +91,10 @@ export default {
       }
     },
     closingGallery(valueChild) {
-      this.galeryVisible = valueChild;
+      store.dispatch("user/actGalleryVisible", valueChild);
+    },
+    openGallery() {
+      store.dispatch("user/actGalleryVisible", true);
     },
   },
 };

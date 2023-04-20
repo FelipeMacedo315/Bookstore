@@ -7,6 +7,7 @@ export default {
       password: "",
     },
     showModal: false,
+    galleryVisible: false,
   },
   getters: {
     value: (state) => {
@@ -25,6 +26,9 @@ export default {
     },
     mutOpenModal(state, payload) {
       state.showModal = payload;
+    },
+    mutGalleryVisible(state, payload) {
+      state.galleryVisible = payload;
     },
   },
   actions: {
@@ -60,6 +64,9 @@ export default {
     },
     actOpenModal({ commit }, payload) {
       commit("mutOpenModal", payload);
+    },
+    actGalleryVisible({ commit }, payload) {
+      commit("mutGalleryVisible", payload);
     },
   },
 };

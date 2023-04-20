@@ -17,10 +17,10 @@
       <Circle v-if="menuResponsive" v-on:click="handleAccountConfig" background="#ffffff" color="#264653" size="9vh">
         <fa icon="user"></fa>
       </Circle>
-      <Circle v-else v-on:click="handleBarResponsive = true" background="#ffffff" color="#264653" size="9vh">
+      <Circle v-else v-on:click="openMenuResponsive" background="#ffffff" color="#264653" size="9vh">
         <fa icon="bars"></fa>
       </Circle>
-      <BarResponsive v-on:closeBar="teste" v-show="handleBarResponsive" />
+      <BarResponsive v-on:closeBar="sendDataFather" v-show="handleBarResponsive" />
     </div>
     <ModalLoginVue v-show="showModal" />
     <div v-show="showAccountConfig === true && showModal === false" class="account-config">
@@ -58,7 +58,7 @@ export default {
 
   computed: {
     ...mapState("user", ["showModal"]),
-    ...mapActions("user", ["actOpenModal"]),
+    ...mapActions("user", ["actOpenModal", "actGalleryVisible"]),
   },
   data() {
     return {
@@ -96,8 +96,12 @@ export default {
         this.menuResponsive = true;
       }
     },
-    teste(valueChild) {
+    sendDataFather(valueChild) {
       this.handleBarResponsive = valueChild;
+    },
+    openMenuResponsive() {
+      this.handleBarResponsive = true;
+      store.dispatch("user/actGalleryVisible", false);
     },
   },
 };
@@ -116,7 +120,7 @@ menu {
     font-size: 1em;
     color: var(--colorDisho);
     font-weight: 400;
-    font-family: "PT-Sans-Regular";
+    font-family: PT-Sans-Regular;
   }
 }
 .container-logo {
