@@ -18,7 +18,9 @@
     </div>
   </main>
   <main v-else>
-    <h1>carrgando</h1>
+    <div class="no-results">
+      <h1>Procurando noticias</h1>
+    </div>
   </main>
 </template>
 
@@ -84,6 +86,13 @@ export default {
   button {
     width: 20%;
     background-color: transparent;
+  }
+}
+@media (max-width: 768px) {
+  .post {
+    button {
+      width: 100%;
+    }
   }
 }
 </style>

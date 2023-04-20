@@ -10,8 +10,8 @@
       <div class="infos">
         <h1 class="logo">Contact Us</h1>
         <p class="txt-subtitle">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non enim fugit placeat aut, doloremque optio minus quo eos dolor
-          pariatur, praesentium debitis inventore commodi natus modi nulla. Voluptas, esse assumenda.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non enim fugit placeat aut, doloremque optio minus quo eos
+          dolor pariatur, praesentium debitis inventore commodi natus modi nulla. Voluptas, esse assumenda.
         </p>
         <div class="container-social-media">
           <img class="social-media-icon" src="../assets/facebook.png" alt="facebook-icon" />
@@ -30,32 +30,32 @@
       <div class="delivery-terms">
         <h1 class="logo">Delivery Terms</h1>
         <p class="txt-subtitle">
-          Integer et lacus vel magna tempus dictum et id nunc. Curabitur sit amet purus a quam luctus hendrerit eu quis neque. Suspendisse
-          eget ultrices mi. Donec nec elit ac purus cursus fermentum a eget ligula. Integer nunc risus, aliquet pellentesque accumsan a,
-          sagittis vitae quam. Vivamus dictum eros a massa ullamcorper
+          Integer et lacus vel magna tempus dictum et id nunc. Curabitur sit amet purus a quam luctus hendrerit eu quis neque.
+          Suspendisse eget ultrices mi. Donec nec elit ac purus cursus fermentum a eget ligula. Integer nunc risus, aliquet
+          pellentesque accumsan a, sagittis vitae quam. Vivamus dictum eros a massa ullamcorper
         </p>
         <p id="txt-topics" class="txt-subtitle">Maecenas id risus fermentum</p>
         <p id="txt-topics" class="txt-subtitle">
-          Curabitur at arcu urna. Sed lobortis justo iaculis blandit malesuada. Etiam sit amet enim nec erat malesuada dapibus eget
+          Curabitur at arcu urna. Sed lobortis justo iaculis blandit malesuada. Etiam sit amet enim nec erat malesuada dapibus
+          eget
         </p>
       </div>
       <div class="license-permits">
         <h1 class="logo">Licenses & Permits</h1>
         <p class="txt-subtitle">
-          Aliquam pulvinar ligula eu nulla condimentum aliquam. Suspendisse vel condimentum urna. Vivamus ultricies, dui quis pharetra
-          posuere, enim leo pretium arcu, convallis consectetur
+          Aliquam pulvinar ligula eu nulla condimentum aliquam. Suspendisse vel condimentum urna. Vivamus ultricies, dui quis
+          pharetra posuere, enim leo pretium arcu, convallis consectetur
         </p>
         <p id="txt-topics" class="txt-subtitle">Maecenas id risus fermentum ( 365 Kb)</p>
         <p id="txt-topics" class="txt-subtitle">
-          Fusce in arcu nisl. Proin interdum ullamcorper diam. Sed eget placerat neque, sed lacinia libero. Mauris a metus ut dolor gravida
-          posuere
+          Fusce in arcu nisl. Proin interdum ullamcorper diam. Sed eget placerat neque, sed lacinia libero. Mauris a metus ut
+          dolor gravida posuere
         </p>
       </div>
     </div>
     <Promotion />
   </main>
 </template>
-
 <script>
 import BreadCrumps from "@/components/BreadCrumps.vue";
 import FeaturesVue from "@/components/Features.vue";
@@ -86,33 +86,29 @@ export default {
   box-shadow: 0px 2px 12px rgba(183, 189, 196, 0.503551);
   display: grid;
   grid-template-columns: 50% 50%;
-  // position: relative;
-  // left: 15%;
-  // right: 15%;
-  // bottom: 20vh;
   margin: -30vh 15% 10vh 15%;
-  .infos {
-    background-color: var(--colorWhite);
-    h1 {
-      padding: 5% 5% 0 5%;
-    }
-    p {
-      padding: 0% 5% 10% 5%;
-    }
-    img {
-      margin-left: 10%;
-    }
+}
+.infos {
+  background-color: var(--colorWhite);
+  h1 {
+    margin: 5% 5% 0 5%;
   }
-  .container-img-map {
-    height: 100%;
-    img {
-      border-radius: 0px;
-      width: 100%;
-      height: 100%;
-    }
+  p {
+    font-size: 1.3em;
+    margin: 0% 5% 10% 5%;
+  }
+  img {
+    margin-left: 10%;
   }
 }
-
+.container-img-map {
+  height: 100%;
+  img {
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+  }
+}
 .texts-contacts {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -136,6 +132,33 @@ export default {
   #txt-topics {
     font-weight: 800;
     margin-left: 1%;
+  }
+}
+@media (max-width: 768px) {
+  .contacts {
+    grid-template-columns: 100%;
+  }
+  .infos {
+    justify-content: center;
+    img {
+      margin: 0;
+    }
+    p {
+      font-size: 1em;
+    }
+
+    .container-social-media {
+      margin-bottom: 5%;
+    }
+  }
+  .container-img-map {
+    border: dashed;
+    height: 50vh;
+  }
+  .texts-contacts {
+    grid-template-columns: auto;
+    row-gap: 5%;
+    margin-bottom: 10%;
   }
 }
 </style>
