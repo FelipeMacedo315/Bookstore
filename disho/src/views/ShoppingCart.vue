@@ -21,9 +21,11 @@
           <section>
             <h2 class="txt-title">${{ (element.priceItem * element.qtd).toFixed(2) }}</h2>
           </section>
-          <CircleVue v-on:click="deleteItem(element.idItem)" background="#ffffff" color="red" size="8vh" sizeText="1.2em">
-            <fa id="trash" icon="trash"></fa>
-          </CircleVue>
+          <section>
+            <CircleVue v-on:click="deleteItem(element.idItem)" background="#ffffff" color="red" size="8vh" sizeText="1.2em">
+              <fa id="trash" icon="trash"></fa>
+            </CircleVue>
+          </section>
         </div>
       </div>
       <div class="cart-infos">
@@ -41,7 +43,9 @@
       <div class="continue-shopping">
         <router-link to="/shop">
           <p class="txt-title">Continue Shopping</p>
-          <CircleVue background="#7eb23d" color="#ffffff" size="1.7em" sizeText="0.9rem"> <fa icon="arrow-right"></fa> </CircleVue>
+          <CircleVue background="#7eb23d" color="#ffffff" size="1.7em" sizeText="0.9rem">
+            <fa icon="arrow-right"></fa>
+          </CircleVue>
         </router-link>
       </div>
       <ButtonVue v-on:click="proceedBuy" btnClass="btn-green" content="Proceed to Checkout" />
@@ -86,7 +90,9 @@ export default {
       }
     },
     proceedBuy() {
-      window.confirm("Este é um site Ficticio feito com objetivo de demonstrar conhecimentos nas ferramentas em que foi construido!");
+      window.confirm(
+        "Este é um site Ficticio feito com objetivo de demonstrar conhecimentos nas ferramentas em que foi construido!"
+      );
     },
   },
   components: {
@@ -121,19 +127,23 @@ export default {
   box-shadow: 0px 2px 12px var(--grayLight);
 }
 .item-cart {
-  display: grid;
-  grid-template-columns: 20% 30% 10% 20% 20%;
-  column-gap: 1%;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   img {
     height: 20vh;
-    width: 7vw;
+    width: 20%;
     object-fit: fill;
+    border-radius: 12px;
   }
   section {
+    line-height: 5vh;
     h2 {
       font-size: 1.5rem;
+    }
+    span {
+      font-size: 1em;
     }
   }
 }
@@ -193,17 +203,28 @@ a {
   text-decoration: none;
 }
 .continue-shopping {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-
   a {
     display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}
 
-    p {
-      padding-right: 1vh;
+@media (max-width: 426px) {
+  .container-cart {
+    grid-template-columns: 100%;
+    margin-bottom: 10%;
+  }
+  .item-cart {
+    flex-direction: column;
+    padding-top: 5%;
+    img {
+      width: 100%;
+      object-fit: fill;
     }
+  }
+  .continue-shopping {
+    justify-content: center;
   }
 }
 </style>

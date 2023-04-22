@@ -152,7 +152,6 @@ export default {
     }
   }
   .container-img-map {
-    border: dashed;
     height: 50vh;
   }
   .texts-contacts {

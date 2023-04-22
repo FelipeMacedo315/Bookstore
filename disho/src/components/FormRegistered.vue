@@ -132,10 +132,11 @@ export default {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   width: 100%;
+  padding-bottom: 1%;
   h1 {
     padding: 10% 0%;
   }
@@ -154,9 +155,8 @@ export default {
   }
 }
 #close-icon {
-  position: relative;
-  left: 45%;
-  bottom: 5vh;
+  margin-left: 90%;
+  margin-top: 2%;
   height: 2rem;
   cursor: pointer;
   &:hover {
@@ -200,5 +200,10 @@ small {
   font-family: PT-Sans-Regular;
   font-size: 0.8rem;
   padding: 2px;
+}
+@media (max-width: 768px) {
+  .form {
+    width: 100%;
+  }
 }
 </style>

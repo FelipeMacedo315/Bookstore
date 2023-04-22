@@ -53,21 +53,21 @@ export default {
 <style lang="scss">
 .sign {
   width: 70vw;
-  height: 80vh;
   position: absolute;
   top: 15%;
   right: 15%;
-  border: solid;
-  display: grid;
-  grid-template-columns: 50% 50%;
+  border: solid 1px var(--colorText);
+  display: flex;
+  flex-direction: row;
 }
 .ilustrator {
   background-color: #f2f2f2;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   line-height: 2rem;
-  padding: 0% 10%;
+  padding: 10% 5% 0% 5%;
+  width: 50%;
   h1 {
     font-size: 3rem;
     padding: 5% 0%;
@@ -80,6 +80,17 @@ export default {
   }
   p {
     font-size: 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .sign {
+    width: 100%;
+    flex-direction: column-reverse;
+    right: 0;
+  }
+  .ilustrator {
+    width: 100%;
+    padding: 0;
   }
 }
 </style>

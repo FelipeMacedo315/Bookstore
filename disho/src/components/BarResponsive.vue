@@ -5,10 +5,19 @@
     <router-link v-on:click="$emit('closeBar', false)" to="/shop"> Shop </router-link>
     <router-link v-on:click="$emit('closeBar', false)" to="/blog"> Blog </router-link>
     <router-link v-on:click="$emit('closeBar', false)" to="/contact">Contact</router-link>
+    <li class="logout-responsive" v-on:click="logout">Logout</li>
   </ul>
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    logout() {
+      this.$emit("closeBar", false);
+      window.localStorage.clear();
+      this.$router.push("/");
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -39,6 +48,11 @@ export default {};
     :hover {
       opacity: 0.5;
     }
+  }
+  .logout-responsive {
+    font-family: viga;
+    color: var(--colorDisho);
+    font-size: 1.5em;
   }
 }
 </style>
