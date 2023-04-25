@@ -44,3 +44,5 @@ http://localhost:8080
 Veja o projeto em funcionamento. [Disho e-commerce](https://disho-ecommerce.vercel.app/)
 
 ## :clapper: Imagens
+
+![Alt text](./disho/src/assets/img-readme-1.png)

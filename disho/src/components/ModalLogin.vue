@@ -14,7 +14,7 @@
         v-bind:fields="['Email', 'Password']"
         mission="Login"
         option="Create Account"
-        urlServer="http://localhost:3000/DishoApi/User/Login"
+        urlServer="https://disho.onrender.com/DishoApi/User/Login"
       />
     </component>
     <component class="form" v-else>
@@ -23,7 +23,7 @@
         v-bind:fields="['Name', 'Email', 'Password']"
         mission="Create Account"
         option="Login"
-        urlServer="http://localhost:3000/DishoApi/User/create-user"
+        urlServer="https://disho.onrender.com/DishoApi/User/create-user"
       />
     </component>
   </div>
