@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     async deleteItem(id) {
-      const delItem = await axios.delete(`http://localhost:3000/DishoApi/User/delet-cart/${localStorage.getItem("token")}`, {
+      const delItem = await axios.delete(`https://disho.onrender.com/DishoApi/User/delet-cart/${localStorage.getItem("token")}`, {
         data: {
           idItem: id,
         },
@@ -83,7 +83,9 @@ export default {
     },
     async getCart() {
       if (localStorage.getItem("token")) {
-        const fetchDataCart = await axios.get(`http://localhost:3000/DishoApi/User/get-cart/${localStorage.getItem("token")}`);
+        const fetchDataCart = await axios.get(
+          `https://disho.onrender.com/DishoApi/User/get-cart/${localStorage.getItem("token")}`
+        );
         const result = await fetchDataCart.data;
         this.itemsCart = result;
         this.sizeCart = result.cart.length;

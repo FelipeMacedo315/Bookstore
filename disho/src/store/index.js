@@ -16,8 +16,6 @@ export default createStore({
     first3Notice(state) {
       if (state.healthNotices.length) {
         return state.healthNotices.slice(0, 3);
-      } else {
-        return ["hbhbhbhbhbhbhbhbh"];
       }
     },
   },
@@ -44,7 +42,9 @@ export default createStore({
   },
   actions: {
     async fetchProducts(context, payload) {
-      const fetchItems = await axios.get(`http://localhost:3000/DishoApi/${context.state.typeProduct}?&page=${context.state.currentPage}`);
+      const fetchItems = await axios.get(
+        `https://disho.onrender.com/DishoApi/${context.state.typeProduct}?&page=${context.state.currentPage}`
+      );
       const resultsFetch = fetchItems.data;
       //ordena os items do array em um padrão
       resultsFetch.products.sort((a, b) => b.name.length - a.name.length);

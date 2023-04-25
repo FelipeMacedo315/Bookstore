@@ -64,7 +64,7 @@ export default {
       if (localStorage.getItem("logged")) {
         store.dispatch("user/actOpenModal", false);
         axios
-          .put(`http://localhost:3000/DishoApi/User/set-cart/${localStorage.getItem("token")}`, {
+          .put(`https://disho.onrender.com/DishoApi/User/set-cart/${localStorage.getItem("token")}`, {
             idItem: this.product._id,
             nameItem: this.product.name,
             priceItem: this.product.price,

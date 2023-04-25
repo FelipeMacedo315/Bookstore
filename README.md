@@ -1,19 +1,46 @@
-# disho
+# E-commerce Disho
 
-## Project setup
+E-commerce de Hortifruti
+
+## 🚀 Começando...
+
+Essas instruções permitirão que você obtenha uma cópia do projeto em operação em sua máquina local para fins de análise e avaliação.
+
+### 📋 Pré-requisitos
+
 ```
-npm install
+Tenha o NodeJS instalado em sua máquina
 ```
 
-### Compiles and hot-reloads for development
+```
+Tenha uma IDE para a visualização do código
+```
+
+### 🔧 Instalação
+
+Faça um clone do repositório com através do GitHub.
+
+Após isso abra a IDE de sua preferência e navegue até a pasta **_disho_**.
+Pode fazer isso abrindo o terminal e executando o comando
+
+```
+cd disho
+```
+
+Dentro da pasta **_disho_** execute o comando
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+O projeto será aberto localmente na sua máquina no endereço
+
 ```
-npm run build
+http://localhost:8080
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 📦 Produção
+
+Veja o projeto em funcionamento. [Disho e-commerce](https://disho-ecommerce.vercel.app/)
+
+## :clapper: Imagens

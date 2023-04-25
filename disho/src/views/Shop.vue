@@ -98,8 +98,6 @@ export default {
       optionSort: "",
       btnStatus: false,
       handleSidebar: true,
-      // urlServerRailway: "https://api-disho.up.railway.app/DishoApi/",
-      urlLocalHost: `http://localhost:3000/DishoApi/`,
     };
   },
   methods: {
@@ -124,7 +122,7 @@ export default {
     filterItems(valueOfChildreen) {
       store.dispatch(
         "fetchFilterProducts",
-        `http://localhost:3000/DishoApi/${this.typeProduct}/filter?&page=${this.currentPage}&nameItem=${valueOfChildreen.currentTag}&maxPrice=${valueOfChildreen.currentValue}`
+        `https://disho.onrender.com/DishoApi/${this.typeProduct}/filter?&page=${this.currentPage}&nameItem=${valueOfChildreen.currentTag}&maxPrice=${valueOfChildreen.currentValue}`
       );
     },
     cancelFilter(valueofSideBar) {
