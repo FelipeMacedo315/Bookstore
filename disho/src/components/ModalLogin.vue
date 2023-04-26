@@ -8,24 +8,22 @@
         excepturi reiciendis praesentium, voluptatem provident culpa voluptate nemo illum, facere delectus ut assumenda!
       </p>
     </div>
-    <component class="form" v-if="haveCount">
-      <FormRegistered
-        v-on:loggin="handleLogin"
-        v-bind:fields="['Email', 'Password']"
-        mission="Login"
-        option="Create Account"
-        urlServer="https://disho.onrender.com/DishoApi/User/Login"
-      />
-    </component>
-    <component class="form" v-else>
-      <FormRegistered
-        v-on:loggin="handleLogin"
-        v-bind:fields="['Name', 'Email', 'Password']"
-        mission="Create Account"
-        option="Login"
-        urlServer="https://disho.onrender.com/DishoApi/User/create-user"
-      />
-    </component>
+    <FormRegistered
+      v-if="haveCount"
+      v-on:loggin="handleLogin"
+      v-bind:fields="['Email', 'Password']"
+      mission="Login"
+      option="Create Account"
+      urlServer="https://disho.onrender.com/DishoApi/User/Login"
+    />
+    <FormRegistered
+      v-else
+      v-on:loggin="handleLogin"
+      v-bind:fields="['Name', 'Email', 'Password']"
+      mission="Create Account"
+      option="Login"
+      urlServer="https://disho.onrender.com/DishoApi/User/create-user"
+    />
   </div>
 </template>
 

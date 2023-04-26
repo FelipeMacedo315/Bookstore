@@ -16,6 +16,8 @@ export default createStore({
     first3Notice(state) {
       if (state.healthNotices.length) {
         return state.healthNotices.slice(0, 3);
+      } else {
+        return "Nenhuma noticia encontrada";
       }
     },
   },

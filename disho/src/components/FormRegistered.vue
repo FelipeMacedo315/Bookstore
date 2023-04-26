@@ -7,15 +7,13 @@
         {{ field }}
         <input v-on:change="checkForm($event)" v-bind:name="field" v-bind:type="field" />
         <!-- check field NAME  -->
-        <small v-if="field === 'Name' && this.$store.state.user.user.name === 'invalid'"> {{ field }} Minimum 2 caracter </small>
+        <small v-if="field === 'Name' && name === 'invalid'"> {{ field }} Minimum 2 caracter </small>
         <small v-else></small>
         <!-- check field EMAIL -->
-        <small v-if="field === 'Email' && this.$store.state.user.user.email === 'invalid'"> {{ field }} invalido </small>
+        <small v-if="field === 'Email' && email === 'invalid'"> {{ field }} invalido </small>
         <small v-else></small>
         <!-- check field PASSWORD -->
-        <small v-if="field === 'Password' && this.$store.state.user.user.password === 'invalid'">
-          {{ field }} Minimum 3 caracter</small
-        >
+        <small v-if="field === 'Password' && password === 'invalid'"> {{ field }} Minimum 3 caracter</small>
         <small v-else></small>
       </label>
     </form>
@@ -27,9 +25,7 @@
       Don't have an account <span class="option">{{ option }}</span>
     </p>
     <!-- teste animaçao -->
-    <component v-show="showFeedBack">
-      <Feedback v-bind:content="contentFeedback" />
-    </component>
+    <Feedback v-show="showFeedBack" v-bind:content="contentFeedback" />
   </div>
 </template>
 
@@ -44,6 +40,7 @@ export default {
   },
   computed: {
     ...mapActions("user", ["actOpenModal"]),
+    ...mapState("user", ["name", "email", "password"]),
   },
   props: ["fields", "mission", "option", "urlServer"],
   mounted() {
@@ -74,28 +71,28 @@ export default {
     handleLogin_Registered() {
       if (
         this.mission === "Login" &&
-        this.$store.state.user.user.email !== "invalid" &&
-        this.$store.state.user.user.email !== "" &&
-        this.$store.state.user.user.password !== "invalid" &&
-        this.$store.state.user.user.password !== ""
+        this.email !== "invalid" &&
+        this.email !== "" &&
+        this.password !== "invalid" &&
+        this.password !== ""
       ) {
-        let bodySend = { email: this.$store.state.user.user.email, password: this.$store.state.user.user.password };
+        let bodySend = { email: this.email, password: this.password };
         this.sendform(bodySend);
       }
 
       if (
         this.mission !== "Login" &&
-        this.$store.state.user.user.name !== "invalid" &&
-        this.$store.state.user.user.name !== "" &&
-        this.$store.state.user.user.email !== "invalid" &&
-        this.$store.state.user.user.email !== "" &&
-        this.$store.state.user.user.password !== "invalid" &&
-        this.$store.state.user.user.password !== ""
+        this.name !== "invalid" &&
+        this.name !== "" &&
+        this.email !== "invalid" &&
+        this.email !== "" &&
+        this.password !== "invalid" &&
+        this.password !== ""
       ) {
         let bodySend = {
-          name: this.$store.state.user.user.name,
-          email: this.$store.state.user.user.email,
-          password: this.$store.state.user.user.password,
+          name: this.name,
+          email: this.email,
+          password: this.password,
         };
         this.sendform(bodySend);
       }
@@ -108,7 +105,7 @@ export default {
           this.contentFeedback = result.data.msg;
           localStorage.setItem("logged", true);
           localStorage.setItem("token", result.data.token);
-
+          console.log(result);
           setTimeout(() => {
             this.showFeedBack = false;
             store.dispatch("user/actOpenModal", false);
@@ -116,6 +113,7 @@ export default {
           }, 2000);
         })
         .catch((err) => {
+          console.log(err);
           this.showFeedBack = true;
           this.contentFeedback = err.response.data.msg;
         });

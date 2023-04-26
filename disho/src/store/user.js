@@ -1,11 +1,9 @@
 export default {
   namespaced: true,
   state: {
-    user: {
-      name: "",
-      email: "",
-      password: "",
-    },
+    name: "",
+    email: "",
+    password: "",
     showModal: false,
     galleryVisible: false,
   },
@@ -16,13 +14,13 @@ export default {
   },
   mutations: {
     updateName(state, payload) {
-      state.user.name = payload;
+      state.name = payload;
     },
     updateEmail(state, payload) {
-      state.user.email = payload;
+      state.email = payload;
     },
     updatePassword(state, payload) {
-      state.user.password = payload;
+      state.password = payload;
     },
     mutOpenModal(state, payload) {
       state.showModal = payload;
