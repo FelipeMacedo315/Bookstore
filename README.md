@@ -77,8 +77,7 @@ O Back-end do projeto está nesse repositório [Repositório Back-end](https://g
  style="display:flex;
  justify-Content:space-evenly;
  align-items:center">
-<img width=40 src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png
-  "> </img> Javascript
+<img width=40 src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png"> </img> Javascript
 <img width=40 src="https://user-images.githubusercontent.com/25181517/117448124-a2da9800-af3e-11eb-85d2-bd1b69b65603.png"> </img> Vue.JS
 <img width=40 src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png"> </img> Css
 <img width=40 src="https://user-images.githubusercontent.com/25181517/192158956-48192682-23d5-4bfc-9dfb-6511ade346bc.png"> </img> Scss
