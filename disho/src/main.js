@@ -23,6 +23,8 @@ import {
   faTrash,
   faBars,
   faFilter,
+  faLemon,
+  faCarrot,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -46,7 +48,10 @@ library.add(
   faTrash,
   faArrowRight,
   faBars,
-  faFilter
+  faFilter,
+  faAppleAlt,
+  faLemon,
+  faCarrot
 );
 
 createApp(App).component("fa", FontAwesomeIcon).use(store).use(router).mount("#app");

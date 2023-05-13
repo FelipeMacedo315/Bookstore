@@ -1,5 +1,8 @@
 <template>
-  <main>
+  <main v-if="!this.products.length">
+    <Loader />
+  </main>
+  <main v-else>
     <BreadCrumps>
       <a>Home </a>
       <a>|</a>
@@ -33,7 +36,8 @@
         </div>
         <div class="container-products">
           <CardProduct
-            v-for="(items, index) in products"
+            v-for="items in products"
+            v-bind:key="items._id"
             v-bind:name="items.name"
             v-bind:price="items.price"
             v-bind:img="items.image[0]"
@@ -42,7 +46,8 @@
         </div>
         <div class="pagination">
           <button
-            v-for="number in totalPages"
+            v-for="(number, index) in totalPages"
+            v-bind:key="index"
             v-on:click="changeStatusBtn(number)"
             v-bind:class="{
               btnGreen: number === currentPage ? true : false,
@@ -64,6 +69,7 @@ import BreadCrumps from "../components/BreadCrumps.vue";
 import { mapActions, mapState } from "vuex";
 import store from "@/store";
 import Circle from "../components/Circle.vue";
+import Loader from "../components/Loader.vue";
 export default {
   components: {
     Circle,
@@ -141,6 +147,7 @@ export default {
     CardProduct,
     BreadCrumps,
     Circle,
+    Loader,
   },
 };
 </script>
