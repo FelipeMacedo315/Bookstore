@@ -1,5 +1,5 @@
 <template>
-  <main v-if="!this.products.length">
+  <main v-if="!this.products.length && this.totalPages !== 0">
     <Loader />
   </main>
   <main v-else>
@@ -15,7 +15,7 @@
         v-on:restartProducts="cancelFilter"
         v-on:filterCondicions="filterItems"
       />
-      <div class="no-results" v-if="!products.length">
+      <div class="no-results" v-if="this.totalPages === 0">
         <h1>
           Nenhum Produto encontrado. <br />
           Tente mudar os filtros

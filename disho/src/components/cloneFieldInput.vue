@@ -26,7 +26,7 @@ export default {
       if (this.inputType === "search") {
         store.dispatch(
           "fetchFilterProducts",
-          `http://localhost:3000/DishoApi/${this.typeProduct}/filter?&page=1&nameItem=${this.searchProduct}&maxPrice=${50}`
+          `https://disho.onrender.com/DishoApi/${this.typeProduct}/filter?&page=1&nameItem=${this.searchProduct}&maxPrice=${50}`
         );
         router.push("/shop");
       }
